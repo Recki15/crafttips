@@ -13,13 +13,14 @@ export const getPosts = async (req, res) => {
 }
 
 export const addNewPost = async(req, res) => {
-    const { title, cover_image, short_desc, long_desc, creator_id } = req.body;
+    const { title, cover_image, short_desc, long_desc, tools, creator_id } = req.body;
     try {
         await Posts.create({
             title: title,
             cover_image: cover_image,
             short_desc: short_desc,
             long_desc: long_desc,
+            tools: tools,
             creator_id: creator_id
         });
         res.json({ msg: "Post creation successfull" });

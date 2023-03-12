@@ -17,7 +17,7 @@ export const Login = () => {
                 email: email,
                 password: password
             });
-            navigate("/dashboard");
+            navigate("/");
         } catch (error) {
             if (error.response) {
                 setMsg(error.response.data.msg);

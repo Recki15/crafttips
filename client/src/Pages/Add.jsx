@@ -1,18 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import EditorToolbar, { modules, formats } from "../Components/EditorToolbar";
 import "react-quill/dist/quill.snow.css";
 import "../Components/TextEditor.css";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import Select from 'react-select';
+import "../App.css";
+import jwt_decode from "jwt-decode";
 
 export const Add = () => {
-    let navigate = useNavigate();
-    const [userInfo, setuserInfo] = useState({
+  const [userId, setUserId] = useState('');
+  let navigate = useNavigate();
+  useEffect(() => {
+    refreshToken();
+}, []);
+
+const refreshToken = async () => {
+    try {
+        const response = await axios.get('http://localhost:5000/token');
+        const decoded = jwt_decode(response.data.accessToken);
+        setUserId(decoded.userId);
+    } catch (error) {
+        if (error.response) {
+            navigate("/");
+        }
+    }
+}
+
+
+
+  const optionList = [
+    { value: "hammer", label: "hammer" },
+    { value: "axe", label: "axe" },
+    { value: "crowbar", label: "crowbar" },
+    { value: "drill", label: "drill" },
+    { value: "spade", label: "spade" }
+  ];
+
+  const [selectedOption, setSelectedOption] = useState("");
+  const [cover_image, setCover_Image] = useState("https://feelforhair.co.uk/wp-content/uploads/2017/12/default-post-thumbnail.png");
+  let sendSelectedOption = "";
+  
+  const [userInfo, setuserInfo] = useState({
       title: '',
-      description: '',
-      information: '',
+      short_desc: '',
+      long_desc: '',
+      tools: '',
     });
+
+    
     const onChangeValue = (e) => {
       setuserInfo({
         ...userInfo,
@@ -21,36 +58,45 @@ export const Add = () => {
     } 
     const ondescription = (value) => {
       setuserInfo({ ...userInfo,
-        description:value
+        long_desc:value
       });
     } 
-    const oninformation = (value) => {
-      setuserInfo({ ...userInfo,
-        information:value
-      });
-    } 
+
     const [isError, setError] = useState(null);
     const addDetails = async (event) => {
       try {
         event.preventDefault();
         event.persist();
-        if(userInfo.description.length < 50){
+
+
+
+        if(userInfo.long_desc.length < 50){
           setError('Required, Add description minimum length 50 characters');
           return;
         }
-        axios.post(`http://localhost:3001/addNewPost`, {
+
+        await axios.post(`http://localhost:5000/addNewPost`, {
           title: userInfo.title,
-          description: userInfo.description,
-          information: userInfo.information,
+          cover_image: cover_image,
+          short_desc: userInfo.short_desc,
+          long_desc: userInfo.long_desc,
+          tools: sendSelectedOption,
+          creator_id: userId
         })
-        .then(res => {
-          if(res.data === true){
-            navigate('/');
-          }
-        })
+        navigate('/');
       } catch (error) { throw error;}    
     } 
   
+
+var handleChange = (selectedOption) => {
+    setSelectedOption(selectedOption.value);
+    selectedOption.forEach(e => {
+      console.log(e.value)
+      sendSelectedOption = sendSelectedOption + e.value + ";";
+      });
+      console.log(sendSelectedOption)
+  };
+
   return ( 
   <>
   
@@ -58,42 +104,61 @@ export const Add = () => {
       <div className="container">
         <div className="row"> 
           <form onSubmit={addDetails} className="update__forms">
-            <h3 className="myaccount-content"> Add  </h3>
             <div className="form-row">
               <div className="form-group col-md-12">
                 <label className="font-weight-bold"> Title <span className="required"> * </span> </label>
+                <p>Please write a title for your CraftTip!</p>
                 <input type="text" name="title" value={userInfo.title} onChange={onChangeValue}  className="form-control" placeholder="Title" required />
               </div>
               <div className="clearfix"></div>
+              <div>
+                <br /><label className="font-weight-bold"> Cover image </label>
+                <p>LINK the image you want to use as a cover for your post. Leaving empty equals using the sample image.</p>
+                <input type="text" name = "cover_image" className="form-control" value={cover_image}  onChange={(e) => setCover_Image(e.target.value)}/>
+              </div>
+              <div>
+                <br /><label className="font-weight-bold"> Short Description <span className="required"> * </span> </label>
+                <p>
+                  Please write a short description for your CraftTip.  
+                  Just tell the basic capabilities of your tip and what it can be used for. 
+                  (Maximum 150 letter)
+                </p>
+                <textarea rows="4" cols={50} maxLength={150} value={userInfo.short_desc} onChange={onChangeValue} name = "short_desc"/>
+              </div>
               <div className="form-group col-md-12 editor">
-                <label className="font-weight-bold"> Description <span className="required"> * </span> </label>
+                <br /><label className="font-weight-bold"> Long Description <span className="required"> * </span> </label>
+                <p>This is the main part where you can tell instructions, upload images for guidance or link in video for your tip.
+                  The limis is only your imagination, try to be as creative as you can! :) 
+                </p>
               <EditorToolbar toolbarId={'t1'}/>
               <ReactQuill
                 theme="snow"
-                value={userInfo.description}
+                value={userInfo.long_desc}
                 onChange={ondescription}
                 placeholder={"Write something awesome..."}
                 modules={modules('t1')}
                 formats={formats}
               />
               </div>
-              <br />
-              <div className="form-group col-md-12 editor">
-                <label className="font-weight-bold"> Additional Information  </label>
-              <EditorToolbar toolbarId={'t2'}/>
-              <ReactQuill
-                theme="snow"
-                value={userInfo.information}
-                onChange={oninformation}
-                placeholder={"Write something awesome..."}
-                modules={modules('t2')}
-                formats={formats}
-              />
+              <div>
+                <br /><label className="font-weight-bold"> Tools <span className="required"> * </span> </label>
+                <p>Select the tools needed for this project from this dropdown menu. You can select multiple one, and also search for the ones you are looking for.</p>
+                <div className="dropdown-container">
+                  <Select
+                     isMulti
+                     options={optionList}
+                     placeholder="Select the tools needed!"
+                     onChange={handleChange}
+                     isSearchable={true}
+                  />
+                </div>
+                <h1></h1>
               </div>
+              <br />
               <br />
               {isError !== null && <div className="errors"> {isError} </div>}
               <div className="form-group col-sm-12 text-right">
-                <button type="submit" className="btn btn__theme"> Submit  </button>
+                <button type="submit" className="btn btn-primary"> Submit  </button>
               </div> 
             </div> 
           </form>

@@ -75,7 +75,7 @@ export const Register = () => {
                                 <div className="field mt-5">
                                     <br/>
                                     <label className="label">You already have an account?</label>
-                                    <Link to='/'>Click here to login!</Link>
+                                    <Link to='/login'>Click here to login!</Link>
                                 </div>
                             </form>
                         </div>

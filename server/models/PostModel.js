@@ -20,6 +20,10 @@ const Posts = db.define('posts',{
     long_desc:{
         type: DataTypes.TEXT
     },
+    tools:{
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
     creator_id:{
         type: DataTypes.INTEGER,
         allowNull: true
