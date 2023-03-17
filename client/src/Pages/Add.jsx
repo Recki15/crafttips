@@ -40,7 +40,7 @@ const refreshToken = async () => {
 
   const [selectedOption, setSelectedOption] = useState("");
   const [cover_image, setCover_Image] = useState("https://feelforhair.co.uk/wp-content/uploads/2017/12/default-post-thumbnail.png");
-  let sendSelectedOption = "";
+  let [sendSelectedOption, setSendSelectedOption] = useState("");;
   
   const [userInfo, setuserInfo] = useState({
       title: '',
@@ -92,7 +92,7 @@ var handleChange = (selectedOption) => {
     setSelectedOption(selectedOption.value);
     selectedOption.forEach(e => {
       console.log(e.value)
-      sendSelectedOption = sendSelectedOption + e.value + ";";
+      setSendSelectedOption(sendSelectedOption + e.value + ";");
       });
       console.log(sendSelectedOption)
   };
