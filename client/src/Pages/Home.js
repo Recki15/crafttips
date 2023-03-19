@@ -8,12 +8,13 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, Grid } from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 export const Home = () => {
   const [name, setName] = useState('');
   const [ispost, setpost] = useState([]);
-  
+  const navigate = useNavigate();
   useEffect(() => {
     refreshToken();
     viewPost();
@@ -40,7 +41,6 @@ export const Home = () => {
         } catch (error) { throw error;}
       }
 
-
       const navbarDecider = () =>{
         if(name.length > 0) {
           return <LoggedInNavbar />
@@ -54,7 +54,7 @@ export const Home = () => {
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {ispost.map((item,index) => ( 
             <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea>
+            <CardActionArea component={Link} to={'posts/'+item.id}>
               <CardMedia
                 component="img"
                 height="140"

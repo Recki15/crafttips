@@ -9,6 +9,7 @@ import { Register } from "./Components/Register";
 import { Add } from "./Pages/Add";
 import { ContactUs } from "./Pages/ContactUs";
 import { Home } from "./Pages/Home";
+import { Post } from "./Pages/Post";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                 <Route path='/Login' element={<><LandingNavBar /> <Login /></>} />
                 <Route path='/Register' element={<><LandingNavBar /> <Register /></>} />
                 <Route path='/Dashboard' element={<><Navbar /> <Dashboard /> </>} />
+                <Route path='/posts/:ids' element={<Post />} />
             </Routes>
         </Router>
     );

@@ -1,4 +1,4 @@
-import { where } from "sequelize";
+import { Op, where } from "sequelize";
 import Posts from "../models/PostModel.js";
 
 export const getPosts = async (req, res) => {
@@ -52,16 +52,15 @@ export const editPostById = async(req, res) => {
 }
 
 export const findPostById = async(req, res) => {
-    const id = req.body;
+    const ids = req.body;
     try {
-        await Posts.findAll(
+        const post = await Posts.findOne(
             {
-                attributes: ['id', 'title', 'cover_image', 'short_desc']
+                attributes: ['id', 'title', 'cover_image', 'long_desc'],
+                where: {id: 29}
             },
-            {
-                where: {id: id}
-            }
         )
+        res.json(post);
     } catch (error) {
         console.log(error);
         res.status(404).json({ msg: "Error!" });
