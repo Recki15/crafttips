@@ -25,6 +25,7 @@ function App() {
                 <Route path='/posts/:ids' element={<Post />} />
             </Routes>
         </Router>
+        
     );
 }
 
