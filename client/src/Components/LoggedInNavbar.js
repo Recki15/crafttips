@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react'
 import './HomeNavbar.css';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -17,11 +17,30 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
+
 function LoggedInNavbar() {
 
-  
+  const [isHovering, setIsHovering] = useState(false);
+  const [isHovering2, setIsHovering2] = useState(false);
 
-  const pages = ['Search', 'Post', 'Contact us'];
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
+
+  const handleMouseEnter2 = () => {
+    setIsHovering2(true);
+  };
+
+  const handleMouseLeave2 = () => {
+    setIsHovering2(false);
+  };
+
+  const pages = [<Link to='/add' style={{color: isHovering ? 'white' : '#98D083'}} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>Add</Link>, 'Contact us',
+   <Link to='/admindecide' style={{color: isHovering2 ? 'white' : '#98D083'}} onMouseEnter={handleMouseEnter2} onMouseLeave={handleMouseLeave2}>Admin Decide</Link>];
   const settings = ['Profile', 'Account', 'Dashboard', <Link to='/logout'>Log out</Link>];
   
     const [anchorElNav, setAnchorElNav] = React.useState(null);

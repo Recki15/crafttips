@@ -8,6 +8,8 @@ import axios from 'axios';
 import Select from 'react-select';
 import "../App.css";
 import jwt_decode from "jwt-decode";
+import LoggedInNavbar from "../Components/LoggedInNavbar";
+import { Grid } from "@mui/material";
 
 export const Add = () => {
   const [userId, setUserId] = useState('');
@@ -97,6 +99,28 @@ var handleChange = (selectedOption) => {
       console.log(sendSelectedOption)
   };
 
+
+
+  const customStyles = {
+    option: (defaultStyles, state) => ({
+      ...defaultStyles,
+      color: state.isSelected ? "#4A3333" : "#98D083",
+      backgroundColor: state.isSelected ? "#98D083" : "#4A3333",
+    }),
+
+    control: (defaultStyles) => ({
+      ...defaultStyles,
+      backgroundColor: "#4A3333",
+      padding: "10px",
+      border: "none",
+      boxShadow: "none",
+      width: "900px"
+    }),
+    singleValue: (defaultStyles) => ({ ...defaultStyles, color: "#98D083" }),
+  };
+
+
+
   return ( 
   <>
     <div className="App">
@@ -107,13 +131,13 @@ var handleChange = (selectedOption) => {
               <div className="form-group col-md-12">
                 <label className="font-weight-bold"> Title <span className="required"> * </span> </label>
                 <p>Please write a title for your CraftTip!</p>
-                <input type="text" name="title" value={userInfo.title} onChange={onChangeValue}  className="form-control" placeholder="Title" required />
+                <input type="text" name="title" value={userInfo.title} onChange={onChangeValue}  className="form-content" placeholder="Title" required />
               </div>
               <div className="clearfix"></div>
               <div>
                 <br /><label className="font-weight-bold"> Cover image </label>
                 <p>LINK the image you want to use as a cover for your post. Leaving empty equals using the sample image.</p>
-                <input type="text" name = "cover_image" className="form-control" value={cover_image}  onChange={(e) => setCover_Image(e.target.value)}/>
+                <input type="text" name = "cover_image" className="form-content" value={cover_image}  onChange={(e) => setCover_Image(e.target.value)}/>
               </div>
               <div>
                 <br /><label className="font-weight-bold"> Short Description <span className="required"> * </span> </label>
@@ -122,14 +146,16 @@ var handleChange = (selectedOption) => {
                   Just tell the basic capabilities of your tip and what it can be used for. 
                   (Maximum 150 letter)
                 </p>
-                <textarea rows="4" cols={50} maxLength={150} value={userInfo.short_desc} onChange={onChangeValue} name = "short_desc"/>
+                <textarea rows="4" cols={50} maxLength={150} value={userInfo.short_desc} onChange={onChangeValue} name = "short_desc" className="form-content"/>
               </div>
+           
               <div className="form-group col-md-12 editor">
                 <br /><label className="font-weight-bold"> Long Description <span className="required"> * </span> </label>
                 <p>This is the main part where you can tell instructions, upload images for guidance or link in video for your tip.
                   The limis is only your imagination, try to be as creative as you can! :) 
                 </p>
               <EditorToolbar toolbarId={'t1'}/>
+              <div className="center">
               <ReactQuill
                 theme="snow"
                 value={userInfo.long_desc}
@@ -137,27 +163,35 @@ var handleChange = (selectedOption) => {
                 placeholder={"Write something awesome..."}
                 modules={modules('t1')}
                 formats={formats}
+                className="form-content"
+                align="center"
               />
+              </div>
               </div>
               <div>
                 <br /><label className="font-weight-bold"> Tools <span className="required"> * </span> </label>
                 <p>Select the tools needed for this project from this dropdown menu. You can select multiple one, and also search for the ones you are looking for.</p>
-                <div className="dropdown-container">
+                <div className="center">
                   <Select
                      isMulti
                      options={optionList}
                      placeholder="Select the tools needed!"
                      onChange={handleChange}
                      isSearchable={true}
+                     styles={customStyles}
+                    
                   />
+                 
                 </div>
+                
                 <h1></h1>
               </div>
+             
               <br />
               <br />
               {isError !== null && <div className="errors"> {isError} </div>}
               <div className="form-group col-sm-12 text-right">
-                <button type="submit" className="btn btn-primary"> Submit  </button>
+                <button type="submit" className="btn"> Submit  </button>
               </div> 
             </div> 
           </form>

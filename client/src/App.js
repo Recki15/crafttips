@@ -10,6 +10,7 @@ import { Add } from "./Pages/Add";
 import { ContactUs } from "./Pages/ContactUs";
 import { Home } from "./Pages/Home";
 import { Post } from "./Pages/Post";
+import { AdminDecide } from "./Pages/AdminDecide";
 
 function App() {
     return (
@@ -23,9 +24,10 @@ function App() {
                 <Route path='/Register' element={<><LandingNavBar /> <Register /></>} />
                 <Route path='/Dashboard' element={<><Navbar /> <Dashboard /> </>} />
                 <Route path='/posts/:ids' element={<Post />} />
+                <Route path='/admindecide' element={<AdminDecide />} />
             </Routes>
         </Router>
-        
+
     );
 }
 

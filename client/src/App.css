@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-color: #98D083;
+  font-family: "Ubuntu";
+  font-size: 20px;
 }
 
 .App-logo {
@@ -39,4 +42,29 @@
 
 .post_list{
   background-color: gray;
+}
+
+.btn{
+  background-color: #4A3333;
+  color: white;
+}
+
+.row{
+  color: #4A3333;
+}
+
+.form-content{
+  background-color: #4A3333;
+  width: 900px;
+  color: #98D083;
+  align-content: center;
+}
+
+/*div{
+  border: 1px solid black;
+}
+*/
+.center{
+  margin-left: 16%;
+
 }
