@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Alert from '@mui/material/Alert';
+import '../Pages/Background.css';
 
 export const Register = () => {
     const [name, setName] = useState('');
@@ -35,6 +36,7 @@ export const Register = () => {
         } else {document.getElementById('error').hidden=false;}
     }
     return (
+        
         <section className="hero has-background-grey-light is-fullheight is-fullwidth">
             <div className="hero-body">
                 <div className="container">

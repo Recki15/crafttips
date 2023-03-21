@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import {Link } from "react-router-dom";
 
+
 export const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -32,6 +33,7 @@ export const Login = () => {
         } else {document.getElementById('error').hidden=false;}
     }
     return (
+        <div className="gradient-custom-2" style={{ backgroundColor: '#9de2ff' }}>
         <section className="hero has-background-grey-light is-fullheight is-fullwidth">
             <div className="hero-body">
                 <div className="container">
@@ -67,5 +69,6 @@ export const Login = () => {
                 </div>
             </div>
         </section>
+        </div>
     )
 }

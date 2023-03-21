@@ -1,6 +1,6 @@
 import React from 'react';
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
-import './ProfileEditorStyle.css';
+import './Background.css';
 import { Link } from 'react-router-dom';
 
 export default function ProfileEditor() {

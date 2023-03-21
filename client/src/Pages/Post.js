@@ -5,6 +5,7 @@ import LoggedInNavbar from '../Components/LoggedInNavbar';
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
 import Grid from '@mui/material/Grid';
+import { width } from '@mui/system';
 
 export const Post = () => {
     const { ids } = useParams();
@@ -55,6 +56,7 @@ export const Post = () => {
                 <Grid item xs={8}>
 
                         <h1>{ispost.title}</h1>
+                        <img src={ispost.cover_image}></img>
                         <div dangerouslySetInnerHTML={{ __html: ispost.long_desc}}  />
 
                 </Grid>
