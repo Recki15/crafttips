@@ -87,7 +87,7 @@ function LandingNavBar() {
       }));
 
   return (
-    <AppBar position="static" style={{background:'#4A3333'}}>
+    <AppBar position="static" style={{background:'#222831'}}>
     <Container maxWidth="xl">
       <Toolbar disableGutters>
         
@@ -102,7 +102,7 @@ function LandingNavBar() {
             fontFamily: 'monospace',
             fontWeight: 700,
             letterSpacing: '.3rem',
-            color: '#98D083',
+            color: '#00ADB5',
             textDecoration: 'none',
             ":hover": {color: "white"}
           }}
@@ -159,7 +159,7 @@ function LandingNavBar() {
             <Button
               key={page}
               onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: '#98D083', display: 'block' ,":hover": {color: "white"}}}
+              sx={{ my: 2, color: '#00ADB5', display: 'block' ,":hover": {color: "white"}}}
             >
               {page}
             </Button>

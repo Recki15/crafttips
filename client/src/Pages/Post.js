@@ -4,7 +4,7 @@ import LandingNavBar from '../Components/LandingNavbar';
 import LoggedInNavbar from '../Components/LoggedInNavbar';
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
-
+import Grid from '@mui/material/Grid';
 
 export const Post = () => {
     const { ids } = useParams();
@@ -29,8 +29,7 @@ export const Post = () => {
 
     const viewPostById = async() =>{
         try {
-          await axios.get(`http://localhost:5000/findPostById`, {
-            id: Number(ids),})
+          await axios.get(`http://localhost:5000/findPostById/${ids}`)
           .then(res => { 
               setpost(res.data);
               console.log(ispost)
@@ -49,8 +48,21 @@ export const Post = () => {
     return (
         <>
             {navbarDecider()}
-            <h1>{ispost.title}</h1>
-            <div dangerouslySetInnerHTML={{ __html: ispost.long_desc}}  />
+            <Grid container spacing={2}>
+                <Grid item xs={4}>
+                  xs=8
+                </Grid>
+                <Grid item xs={8}>
+
+                        <h1>{ispost.title}</h1>
+                        <div dangerouslySetInnerHTML={{ __html: ispost.long_desc}}  />
+
+                </Grid>
+                <Grid item xs={4}>
+                   xs=4
+                </Grid>
+            </Grid>
+           
         </>
     )
 }

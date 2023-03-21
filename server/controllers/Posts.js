@@ -38,11 +38,11 @@ export const editPostById = async(req, res) => {
             cover_image: cover_image,
             short_desc: short_desc,
             long_desc: long_desc,
-        },
-        {where: {
-            creator_id: creator_id,
-            postId: postId
-        }}
+            where: {
+                creator_id: creator_id,
+                postId: postId
+            }
+        }
         )
          res.json(true)  
     }catch(error){
@@ -52,12 +52,11 @@ export const editPostById = async(req, res) => {
 }
 
 export const findPostById = async(req, res) => {
-    const ids = req.body;
     try {
         const post = await Posts.findOne(
             {
                 attributes: ['id', 'title', 'cover_image', 'long_desc'],
-                where: {id: 29}
+                where: {id: req.params.id}
             },
         )
         res.json(post);

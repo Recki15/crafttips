@@ -11,6 +11,8 @@ import { ContactUs } from "./Pages/ContactUs";
 import { Home } from "./Pages/Home";
 import { Post } from "./Pages/Post";
 import { AdminDecide } from "./Pages/AdminDecide";
+import ProfileManage  from "./Pages/ProfileManage";
+import ProfileEditor  from "./Pages/ProfileEditor";
 
 function App() {
     return (
@@ -23,8 +25,10 @@ function App() {
                 <Route path='/Login' element={<><LandingNavBar /> <Login /></>} />
                 <Route path='/Register' element={<><LandingNavBar /> <Register /></>} />
                 <Route path='/Dashboard' element={<><Navbar /> <Dashboard /> </>} />
+                <Route path='/ProfileManage' element={<><LoggedInNavbar /> <ProfileManage /> </>} />
                 <Route path='/posts/:ids' element={<Post />} />
                 <Route path='/admindecide' element={<AdminDecide />} />
+                <Route path='/ProfileManage/edit' element={<><LoggedInNavbar /> <ProfileEditor /> </>} />
             </Routes>
         </Router>
 

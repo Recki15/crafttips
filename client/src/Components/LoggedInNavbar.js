@@ -39,9 +39,9 @@ function LoggedInNavbar() {
     setIsHovering2(false);
   };
 
-  const pages = [<Link to='/add' style={{color: isHovering ? 'white' : '#98D083'}} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>Add</Link>, 'Contact us',
-   <Link to='/admindecide' style={{color: isHovering2 ? 'white' : '#98D083'}} onMouseEnter={handleMouseEnter2} onMouseLeave={handleMouseLeave2}>Admin Decide</Link>];
-  const settings = ['Profile', 'Account', 'Dashboard', <Link to='/logout'>Log out</Link>];
+  const pages = [<Link to='/add' style={{color: isHovering ? 'white' : '#00ADB5'}} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>Add</Link>, 'Contact us',
+   <Link to='/admindecide' style={{color: isHovering2 ? 'white' : '#00ADB5'}} onMouseEnter={handleMouseEnter2} onMouseLeave={handleMouseLeave2}>Admin Decide</Link>];
+  const settings = ['Profile', <Link to='/ProfileManage'>Account</Link>, 'Dashboard', <Link to='/logout'>Log out</Link>];
   
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -73,7 +73,7 @@ function LoggedInNavbar() {
     }
 
   return (
-    <AppBar position="static" style={{background:'#4A3333'}}>
+    <AppBar position="static" style={{background:'#222831'}}>
     <Container maxWidth="xl">
       <Toolbar disableGutters>
         
@@ -88,7 +88,7 @@ function LoggedInNavbar() {
             fontFamily: 'monospace',
             fontWeight: 700,
             letterSpacing: '.3rem',
-            color: '#98D083',
+            color: '#00ADB5',
             textDecoration: 'none',
             ":hover": {color: "white"}
           }}
@@ -142,7 +142,7 @@ function LoggedInNavbar() {
             <Button
               key={page}
               onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: '#98D083', display: 'block' ,":hover": {color: "white"}}}
+              sx={{ my: 2, color: '#00ADB5', display: 'block' ,":hover": {color: "white"}}}
             >
               {page}
             </Button>

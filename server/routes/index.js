@@ -14,6 +14,6 @@ router.delete('/logout', Logout);
 router.get('/posts', getPosts);
 router.post('/addNewPost', addNewPost);
 router.put('/editPostById', editPostById);
-router.get('/findPostById', findPostById);
+router.get('/findPostById/:id', findPostById);
  
 export default router;

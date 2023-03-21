@@ -104,19 +104,19 @@ var handleChange = (selectedOption) => {
   const customStyles = {
     option: (defaultStyles, state) => ({
       ...defaultStyles,
-      color: state.isSelected ? "#4A3333" : "#98D083",
-      backgroundColor: state.isSelected ? "#98D083" : "#4A3333",
+      color: state.isSelected ? "#222831" : "#00ADB5",
+      backgroundColor: state.isSelected ? "#00ADB5" : "#222831",
     }),
 
     control: (defaultStyles) => ({
       ...defaultStyles,
-      backgroundColor: "#4A3333",
+      backgroundColor: "#222831",
       padding: "10px",
       border: "none",
       boxShadow: "none",
-      width: "900px"
+      width: "90%"
     }),
-    singleValue: (defaultStyles) => ({ ...defaultStyles, color: "#98D083" }),
+    singleValue: (defaultStyles) => ({ ...defaultStyles, color: "#222831" }),
   };
 
 
