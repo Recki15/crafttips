@@ -44,7 +44,7 @@ function LoggedInNavbar() {
   const settings = ['Profile', <Link to='/ProfileManage'>Account</Link>, 'Dashboard', <Link to='/logout'>Log out</Link>];*/
 
   const menu = [{name:"Add", url:"/add"},
-  {name:"Admin Decide", url:"/admindecide"}];
+  {name:"Admin", url:"/admin"}];
 
   const settings = [{name:"Profile", url:"/ProfileManage"},{name:"Logout", url:"/logout"}];
   

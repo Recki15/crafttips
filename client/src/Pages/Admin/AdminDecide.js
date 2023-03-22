@@ -5,9 +5,12 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import LoggedInNavbar from '../../Components/LoggedInNavbar';
 import { CardActionArea, Grid } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import "../Background.css";
+import { SideBar } from './SideBar';
+import { margin } from '@mui/system';
 
 export const AdminDecide = () =>{
     
@@ -43,12 +46,21 @@ export const AdminDecide = () =>{
         
   
     return (
-      <>
-          
-          <div className=''>
+       <>
+        <LoggedInNavbar/>
+        <div className='gradient-custom-3'>
+        <Grid container spacing={1}>
+        <Grid item xs={2} className="gridR">
+        <div className='sidebardiv'>
+        <SideBar />
+        </div>
+        </Grid>
+        <Grid item xs={10} className="gridL">
+        <div className='decidediv'>
+        <div className=''>
           <Grid container rowSpacing={-5} columnSpacing={{ xs: -1, sm: -2, md: -1 }}>
           {ispost.map((item,index) => ( 
-            <Card sx={{ maxWidth: 345}}>
+            <Card sx={{ maxWidth: 345, margin: "10px"}}>
               <CardActionArea component={Link} to={'posts/'+item.id}>
                 <CardMedia
                   component="img"
@@ -71,6 +83,10 @@ export const AdminDecide = () =>{
           ))} 
           </Grid>
           </div>
-      </>
+        </div>
+        </Grid>
+        </Grid>
+        </div>
+    </>
     )
 }

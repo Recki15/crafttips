@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
 import { useNavigate } from 'react-router-dom';
+import LoggedInNavbar from './LoggedInNavbar';
+import { Grid } from '@mui/material';
+import { SideBar } from '../Pages/Admin/SideBar';
 
 export const Dashboard = () => {
     const [name, setName] = useState('');
@@ -57,6 +60,17 @@ export const Dashboard = () => {
     }
 
     return (
+        <>
+        <LoggedInNavbar/>
+        <div className='gradient-custom-3'>
+        <Grid container spacing={1}>
+        <Grid item xs={2} className="gridR">
+        <div className='sidebardiv'>
+        <SideBar />
+        </div>
+        </Grid>
+        <Grid item xs={10} className="gridL">
+        <div className='decidediv'>
         <div className="container mt-5">
             <h1>Welcome Back: {name}</h1>
             <table className="table is-striped is-fullwidth">
@@ -79,5 +93,12 @@ export const Dashboard = () => {
                 </tbody>
             </table>
         </div>
+        </div>
+        </Grid>
+        </Grid>
+        </div>
+    </>
+
+        
     )
 }

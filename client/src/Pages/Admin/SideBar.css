@@ -1,10 +1,36 @@
-.div1{
-    min-width: 200px;
-    max-width: 240px;
-    margin-top: 0px;
-}
-
-.div2{
-    margin-bottom: 25px;
+.sideBar{
+    height: 100%;
+    width: 50%;
     text-align: center;
 }
+
+.sideBarList{
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+align-items: center;
+}
+
+.sideBarList .row{
+width: 200%;
+height: 60px;
+list-style-type: none;
+margin: 0%;
+display: flex;
+flex-direction: row;
+color: white;
+justify-content: center;
+align-items: center;
+align-content: center;
+}
+
+.sideBarList .row#active{
+    background-color: #393E46;
+    color: #00ADB5;
+}
+
+.sideBarList .row:hover{
+    background-color: #393E46;
+    color: #00ADB5;
+}
+

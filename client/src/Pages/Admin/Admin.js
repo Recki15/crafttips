@@ -25,18 +25,18 @@ return(
         <>
         {navbarDecider()}
         <div className='gradient-custom-3'>
-            <Grid container>
-                <Grid item>
-                    <div className='sidebar'>
-                        <SideBar />
-                    </div>
-                </Grid>
-                <Grid item xs={8}>
-                    <div>
-                        <AdminDecide />
-                    </div>
-                </Grid>
-            </Grid>
+        <Grid container spacing={1}>
+        <Grid item xs={2} className="gridR">
+        <div className='sidebardiv'>
+        <SideBar />
+        </div>
+        </Grid>
+        <Grid item xs={10} className="gridL">
+        <div className='decidediv'>
+        
+        </div>
+        </Grid>
+        </Grid>
         </div>
     </>
     )

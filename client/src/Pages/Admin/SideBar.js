@@ -3,6 +3,7 @@ import "./SideBar.css";
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import {SideBarData} from "./SideBarData";
 
 
 
@@ -10,27 +11,23 @@ import Button from '@mui/material/Button';
 
 export const SideBar = () =>{
 
-    const menu = [{name:"Admin Decide", url:"/admindecide"},{name:"Dasboard", url:"/admindecide"}];
+    
 
 return(
 <>
-
-
-   <div className='div1'>
-    <div className='div2'>
-    <Box sx={{ flexGrow: 1, display: 'inline' }}>
-          {menu.map((page, index) => (
-            <Button
-              key={index}
-              LinkComponent={Link} to={page.url}
-              sx={{ my: 2, color: '#00ADB5', display: 'block' ,":hover": {color: "white"}}}
-            >
-              {page.name}
-            </Button>
-          ))}
-        </Box>
+    <div className='sideBar'>
+      <ul className='sideBarList'>
+        {SideBarData.map((value, key) => {
+          return <Link 
+          id={window.location.pathname == value.link ? "active" : ""}
+          key={key}
+          className= "row"
+          onClick={()=> window.location.pathname = value.link}>
+              <div>{value.title}</div>
+          </Link>
+        })}
+      </ul>
     </div>
-   </div>
 
     
 </>

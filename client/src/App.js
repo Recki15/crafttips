@@ -26,10 +26,10 @@ function App() {
                 <Route path="/admin" element={<> <Admin /></>} />
                 <Route path='/Login' element={<><LandingNavBar /> <Login /></>} />
                 <Route path='/Register' element={<><LandingNavBar /> <Register /></>} />
-                <Route path='/Dashboard' element={<><Navbar /> <Dashboard /> </>} />
+                <Route path='/admin/Dashboard' element={<><Dashboard /> </>} />
                 <Route path='/ProfileManage' element={<><LoggedInNavbar /> <ProfileManage /> </>} />
-                <Route path='/admindecide/posts/:ids' element={<Post />} />
-                <Route path='/admindecide' element={<AdminDecide />} />
+                <Route path='/admin/admindecide/posts/:ids' element={<Post />} />
+                <Route path='/admin/admindecide' element={<AdminDecide />} />
                 <Route path='/ProfileManage/edit' element={<><LoggedInNavbar /> <ProfileEditor /> </>} />
             </Routes>
         </Router>
