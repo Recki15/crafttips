@@ -37,11 +37,12 @@ export const Register = () => {
     }
     return (
         
-        <section className="hero has-background-grey-light is-fullheight is-fullwidth">
+        <section className="hero gradient-custom-3 is-fullheight is-fullwidth">
             <div className="hero-body">
                 <div className="container">
                     <div className="columns is-centered">
                         <div className="column is-4-desktop">
+                        <div className='box-shadow'>
                             <form onSubmit={Register} className="box">
                                 <div className="field mt-5">
                                     <label className="label">Name</label>
@@ -71,8 +72,8 @@ export const Register = () => {
                                 <div hidden id='error'>
                                 <Alert severity="error">{msg}</Alert>
                                 </div>
-                                <div className="field mt-5">
-                                    <button className="button is-success is-fullwidth">Register</button>
+                                <div className="buttondiv">
+                                    <button className="loginbutton">Register</button>
                                 </div>
                                 <div className="field mt-5">
                                     <br/>
@@ -80,6 +81,7 @@ export const Register = () => {
                                     <Link to='/login'>Click here to login!</Link>
                                 </div>
                             </form>
+                            </div>
                         </div>
                     </div>
                 </div>

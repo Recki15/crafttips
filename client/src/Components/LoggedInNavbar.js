@@ -39,9 +39,14 @@ function LoggedInNavbar() {
     setIsHovering2(false);
   };
 
-  const pages = [<Link to='/add' style={{color: isHovering ? 'white' : '#00ADB5'}} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>Add</Link>, 'Contact us',
+  /*const pages = [<Link to='/add' style={{color: isHovering ? 'white' : '#00ADB5'}} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>Add</Link>, 'Contact us',
    <Link to='/admindecide' style={{color: isHovering2 ? 'white' : '#00ADB5'}} onMouseEnter={handleMouseEnter2} onMouseLeave={handleMouseLeave2}>Admin Decide</Link>];
-  const settings = ['Profile', <Link to='/ProfileManage'>Account</Link>, 'Dashboard', <Link to='/logout'>Log out</Link>];
+  const settings = ['Profile', <Link to='/ProfileManage'>Account</Link>, 'Dashboard', <Link to='/logout'>Log out</Link>];*/
+
+  const menu = [{name:"Add", url:"/add"},
+  {name:"Admin Decide", url:"/admindecide"}];
+
+  const settings = [{name:"Profile", url:"/ProfileManage"},{name:"Logout", url:"/logout"}];
   
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -128,9 +133,9 @@ function LoggedInNavbar() {
               
             }}
           >
-            {pages.map((page) => (
-              <MenuItem key={page} onClick={handleCloseNavMenu} >
-                <Typography textAlign="center">{page}</Typography>
+            {menu.map((page, index) => (
+              <MenuItem key={index} onClick={handleCloseNavMenu} LinkComponent={Link} to={page.url} >
+                <Typography textAlign="center">{page.name}</Typography>
               </MenuItem>
             ))}
           </Menu>
@@ -138,13 +143,14 @@ function LoggedInNavbar() {
         <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
        
         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          {pages.map((page) => (
+          {menu.map((page, index) => (
             <Button
-              key={page}
+              key={index}
               onClick={handleCloseNavMenu}
+              LinkComponent={Link} to={page.url}
               sx={{ my: 2, color: '#00ADB5', display: 'block' ,":hover": {color: "white"}}}
             >
-              {page}
+              {page.name}
             </Button>
           ))}
         </Box>
@@ -170,11 +176,15 @@ function LoggedInNavbar() {
             }}
             open={Boolean(anchorElUser)}
             onClose={handleCloseUserMenu}
+            
           >
-            {settings.map((setting) => (
-              <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">{setting}</Typography>
+            {settings.map((setting, index) => (
+              <Link key={index} to={setting.url}>
+              <MenuItem  onClick={handleCloseUserMenu}>
+              <Typography textAlign="center">{setting.name}</Typography>
+              
               </MenuItem>
+              </Link>
             ))}
           </Menu>
         </Box>

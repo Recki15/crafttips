@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import {Link } from "react-router-dom";
+import "../Pages/Background.css";
 
 
 export const Login = () => {
@@ -33,12 +34,12 @@ export const Login = () => {
         } else {document.getElementById('error').hidden=false;}
     }
     return (
-        <div className="gradient-custom-2" style={{ backgroundColor: '#9de2ff' }}>
-        <section className="hero has-background-grey-light is-fullheight is-fullwidth">
-            <div className="hero-body">
+        <section className="hero gradient-custom-3 is-fullheight is-fullwidth">
+            <div className="hero-body ">
                 <div className="container">
                     <div className="columns is-centered">
                         <div className="column is-4-desktop">
+                            <div className='box-shadow'>
                             <form onSubmit={Auth} className="box">
                                 <div hidden id='error'>
                                 <Alert severity="error">{msg}</Alert>
@@ -55,8 +56,8 @@ export const Login = () => {
                                         <input type="password" className="input" placeholder="******" value={password} onChange={(e) => setPassword(e.target.value)} />
                                     </div>
                                 </div>
-                                <div className="field mt-5">
-                                    <button className="button is-success is-fullwidth">Login</button>
+                                <div className="buttondiv">
+                                    <button className="loginbutton">Login</button>
                                 </div>
                                 <div className="field mt-5">
                                     <br/>
@@ -64,11 +65,12 @@ export const Login = () => {
                                     <Link to='/register'>Click here to register now!</Link>
                                 </div>
                             </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        </div>
+       
     )
 }

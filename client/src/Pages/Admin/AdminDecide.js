@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
-import LandingNavBar from '../Components/LandingNavbar';
-import LoggedInNavbar from '../Components/LoggedInNavbar';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, Grid } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-import { spacing } from '@mui/system';
+import "../Background.css";
 
 export const AdminDecide = () =>{
     
-    const [name, setName] = useState('');
+  const [name, setName] = useState('');
     const [ispost, setpost] = useState([]);
     const navigate = useNavigate();
     useEffect(() => {
@@ -42,16 +40,12 @@ export const AdminDecide = () =>{
           } catch (error) { throw error;}
         }
   
-        const navbarDecider = () =>{
-          if(name.length > 0) {
-            return <LoggedInNavbar />
-          }else{
-            return <LandingNavBar />}
-        }
+        
   
     return (
       <>
-          {navbarDecider()}
+          
+          <div className=''>
           <Grid container rowSpacing={-5} columnSpacing={{ xs: -1, sm: -2, md: -1 }}>
           {ispost.map((item,index) => ( 
             <Card sx={{ maxWidth: 345}}>
@@ -76,7 +70,7 @@ export const AdminDecide = () =>{
             </Card>
           ))} 
           </Grid>
-          
+          </div>
       </>
     )
 }

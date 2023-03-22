@@ -1,9 +1,31 @@
-.gradient-custom-2 {
-    background: #fbc2eb;
-    background: -webkit-linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1));
-    background: linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1));
+.gradient-custom-3 {
+    background: #222831;
+    background: -webkit-linear-gradient(to bottom, rgba(34, 40, 49), rgba(0, 173, 181));
+    background: linear-gradient(to bottom, rgba(34, 40, 49), rgba(0, 173, 181));
     }
 
-    div{
+    .box-shadow{
+      box-shadow: rgba(17, 17, 26, 0.1) 2px 15px 29px, rgba(17, 17, 26, 0.1) 2px 25px 56px, rgba(17, 17, 26, 0.1) 2px 29px 80px;
+    }
+
+.loginbutton{
+    background-color: #222831;
+    height: 39px;
+    width: 100%;
+    border-radius: 5px;
+    color: #00ADB5;
+}
+
+.loginbutton:hover{
+  color: #EEEEEE;
+}
+.buttondiv{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-top: 40px;
+}
+
+    /*div{
         border: 1px solid black;
-      }
+      }*/

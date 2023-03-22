@@ -10,9 +10,10 @@ import { Add } from "./Pages/Add";
 import { ContactUs } from "./Pages/ContactUs";
 import { Home } from "./Pages/Home";
 import { Post } from "./Pages/Post";
-import { AdminDecide } from "./Pages/AdminDecide";
+import { AdminDecide } from "./Pages/Admin/AdminDecide";
 import ProfileManage  from "./Pages/ProfileManage";
 import ProfileEditor  from "./Pages/ProfileEditor";
+import {Admin} from "./Pages/Admin/Admin";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                 <Route path='/logout' element={<Logout />} />
                 <Route path="/Contact" element={<><LoggedInNavbar /><ContactUs /></>} />
                 <Route path="/add" element={<><LoggedInNavbar /> <Add /></>} />
+                <Route path="/admin" element={<> <Admin /></>} />
                 <Route path='/Login' element={<><LandingNavBar /> <Login /></>} />
                 <Route path='/Register' element={<><LandingNavBar /> <Register /></>} />
                 <Route path='/Dashboard' element={<><Navbar /> <Dashboard /> </>} />
