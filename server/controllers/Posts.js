@@ -12,6 +12,30 @@ export const getPosts = async (req, res) => {
     }
 }
 
+export const getActivePosts = async (req, res) => {
+    try {
+        const posts = await Posts.findAll({
+            attributes: ['id', 'title', 'cover_image', 'short_desc', 'updatedAt', 'tools'],
+            where: {active : 1}
+        });
+        res.json(posts);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getInactivePosts = async (req, res) => {
+    try {
+        const posts = await Posts.findAll({
+            attributes: ['id', 'title', 'cover_image', 'short_desc'],
+            where: {active: 0}
+        });
+        res.json(posts);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export const addNewPost = async(req, res) => {
     const { title, cover_image, short_desc, long_desc, tools, creator_id } = req.body;
     try {
@@ -55,9 +79,36 @@ export const findPostById = async(req, res) => {
     try {
         const post = await Posts.findOne(
             {
-                attributes: ['id', 'title', 'cover_image', 'long_desc'],
+                attributes: ['id', 'title', 'cover_image', 'long_desc', 'active'],
                 where: {id: req.params.id}
             },
+        )
+        res.json(post);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({ msg: "Error!" });
+    }
+}
+
+export const deletePost = async(req, res) => {
+    try {
+        const post = await Posts.destroy(
+            {
+                where: {id: req.params.id}
+            },
+        )
+        res.json(post);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({ msg: "Error!" });
+    }
+}
+
+export const activatePost = async(req, res) => {
+    try {
+        const post = await Posts.update(
+            {active: 1},
+            {where: {id: req.params.id}}
         )
         res.json(post);
     } catch (error) {

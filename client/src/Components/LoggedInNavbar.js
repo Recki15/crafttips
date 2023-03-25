@@ -43,8 +43,10 @@ function LoggedInNavbar() {
    <Link to='/admindecide' style={{color: isHovering2 ? 'white' : '#00ADB5'}} onMouseEnter={handleMouseEnter2} onMouseLeave={handleMouseLeave2}>Admin Decide</Link>];
   const settings = ['Profile', <Link to='/ProfileManage'>Account</Link>, 'Dashboard', <Link to='/logout'>Log out</Link>];*/
 
-  const menu = [{name:"Add", url:"/add"},
-  {name:"Admin", url:"/admin"}];
+  const menu = [
+    {name:"Home", url:"/"},
+    {name:"Add", url:"/add"},
+    {name:"Admin", url:"/admin"}];
 
   const settings = [{name:"Profile", url:"/ProfileManage"},{name:"Logout", url:"/logout"}];
   
@@ -73,7 +75,7 @@ function LoggedInNavbar() {
             await axios.delete('http://localhost:5000/logout');
             navigate("/");
         } catch (error) {
-            console.log(error);
+          console.log("Looking for something? Might find it if you register/log in! ;)");
         }
     }
 
@@ -86,7 +88,6 @@ function LoggedInNavbar() {
           variant="h6"
           noWrap
           component="a"
-          href="/"
           sx={{
             mr: 2,
             display: { xs: 'none', md: 'flex' },
@@ -97,8 +98,9 @@ function LoggedInNavbar() {
             textDecoration: 'none',
             ":hover": {color: "white"}
           }}
+          onClick={() => navigate('/')}
         >
-          CRAFTTIPS
+          CRAFTTIPS 
         </Typography>
 
         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none'} }}>
@@ -134,9 +136,11 @@ function LoggedInNavbar() {
             }}
           >
             {menu.map((page, index) => (
-              <MenuItem key={index} onClick={handleCloseNavMenu} LinkComponent={Link} to={page.url} >
+              <Link to={page.url}  key={index}>
+              <MenuItem onClick={handleCloseNavMenu} >
                 <Typography textAlign="center">{page.name}</Typography>
               </MenuItem>
+              </Link>
             ))}
           </Menu>
         </Box>

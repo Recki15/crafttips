@@ -87,6 +87,14 @@ p,label{
   color: #EEEEEE;
 }
 
+.ql-snow .ql-picker-options{
+  background-color: #222831;
+}
+
+.css-6hp17o-MuiList-root-MuiMenu-list {
+  background-color: #222831;
+}
+
 /*.gridR{
   border-right:1px solid black;
 }*/

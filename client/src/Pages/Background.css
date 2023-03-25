@@ -1,34 +1,48 @@
+html,
+body {
+  height: 100%;
+  background: #393e46;
+}
 .gradient-custom-3 {
-    background: #222831;
-    background: -webkit-linear-gradient(to bottom, rgba(34, 40, 49), rgba(0, 173, 181));
-    background: linear-gradient(to bottom, rgba(34, 40, 49), rgba(0, 173, 181));
-    }
-
-    .box-shadow{
-      box-shadow: rgba(17, 17, 26, 0.1) 2px 15px 29px, rgba(17, 17, 26, 0.1) 2px 25px 56px, rgba(17, 17, 26, 0.1) 2px 29px 80px;
-    }
-
-.loginbutton{
-    background-color: #222831;
-    height: 39px;
-    width: 100%;
-    border-radius: 5px;
-    color: #00ADB5;
+  background: #222831;
+  background: -webkit-linear-gradient(
+    to bottom,
+    rgba(34, 40, 49),
+    rgba(0, 173, 181)
+  );
+  background: linear-gradient(to bottom, rgba(34, 40, 49), rgba(0, 173, 181));
 }
 
-.loginbutton:hover{
-  color: #EEEEEE;
+.box-shadow {
+  box-shadow: rgba(17, 17, 26, 0.1) 2px 15px 29px,
+    rgba(17, 17, 26, 0.1) 2px 25px 56px, rgba(17, 17, 26, 0.1) 2px 29px 80px;
 }
-.buttondiv{
+
+.loginbutton {
+  background-color: #222831;
+  height: 39px;
+  width: 100%;
+  border-radius: 5px;
+  color: #00adb5;
+}
+
+.loginbutton:hover {
+  color: #eeeeee;
+}
+.buttondiv {
   justify-content: center;
   align-items: center;
   display: flex;
   margin-top: 40px;
 }
 
-    /*div{
+/*div{
         border: 1px solid black;
       }*/
-.gridR{
+.gridR {
   background-color: #222831;
+}
+
+#post{
+  word-wrap: break-word
 }

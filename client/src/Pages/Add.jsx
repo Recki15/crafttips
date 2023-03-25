@@ -8,8 +8,6 @@ import axios from 'axios';
 import Select from 'react-select';
 import "../App.css";
 import jwt_decode from "jwt-decode";
-import LoggedInNavbar from "../Components/LoggedInNavbar";
-import { Grid } from "@mui/material";
 
 export const Add = () => {
   const [userId, setUserId] = useState('');

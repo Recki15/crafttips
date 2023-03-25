@@ -106,29 +106,29 @@ export const QuillToolbar = (props) => {
       <button className="ql-strike" />
     </span>
     <span className="ql-formats">
-    <select className="ql-font">
+    <select className="ql-font" defaultValue={"Inter"}>
       <option value="arial" > Arial </option>
       <option value="comic-sans">Comic Sans</option>
       <option value="courier-new">Courier New</option>
       <option value="georgia">Georgia</option>
       <option value="helvetica">Helvetica</option>
-      <option value="Inter" selected>Inter</option>
+      <option value="Inter">Inter</option>
       <option value="lucida">Lucida</option>
     </select>
-      <select className="ql-size">
+      <select className="ql-size" defaultValue={"medium"}>
         <option value="extra-small">Extra Small</option>
         <option value="small">Small</option>
-        <option value="medium" selected>Medium</option>
+        <option value="medium">Medium</option>
         <option value="large">Large</option>
       </select>
-      <select className="ql-header">
+      <select className="ql-header" defaultValue={"normal"}>
         <option value="1">Heading 1</option>
         <option value="2">Heading 2</option>
         <option value="3">Heading 3</option>
         <option value="4">Heading 4</option>
         <option value="5">Heading 5</option>
         <option value="6">Heading 6</option>
-        <option value="" selected>Normal</option>
+        <option value="normal">Normal</option>
       </select>
     </span>
     <span className="ql-formats">

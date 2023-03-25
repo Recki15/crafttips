@@ -44,7 +44,9 @@ function LandingNavbar() {
   const settings = ['Profile', <Link to='/ProfileManage'>Account</Link>, 'Dashboard', <Link to='/logout'>Log out</Link>];*/
 
   const menu = [{name:"FAQ", url:"/faq"}];
-  const mobilemenu = [{name:"Home", url:"/"},{name:"FAQ", url:"/faq"}];
+  const mobilemenu = [
+    {name:"Home", url:"/"},
+    {name:"FAQ", url:"/faq"}];
 
   const settings = [{name:"Login", url:"/login"},{name:"Register", url:"/register"}];
   
@@ -73,7 +75,7 @@ function LandingNavbar() {
             await axios.delete('http://localhost:5000/logout');
             navigate("/");
         } catch (error) {
-            console.log(error);
+            console.log("Looking for something? Might find it if you register/log in! ;)");
         }
     }
 
@@ -86,7 +88,6 @@ function LandingNavbar() {
           variant="h6"
           noWrap
           component="a"
-          href="/"
           sx={{
             mr: 2,
             display: { xs: 'none', md: 'flex' },
@@ -97,6 +98,7 @@ function LandingNavbar() {
             textDecoration: 'none',
             ":hover": {color: "white"}
           }}
+          onClick={() => navigate('/')}
         >
           CRAFTTIPS
         </Typography>
@@ -134,9 +136,11 @@ function LandingNavbar() {
             }}
           >
             {mobilemenu.map((page, index) => (
-              <MenuItem key={index} onClick={handleCloseNavMenu} LinkComponent={Link} to={page.url} >
+              <Link to={page.url} key={index}>
+              <MenuItem onClick={handleCloseNavMenu}>
                 <Typography textAlign="center">{page.name}</Typography>
               </MenuItem>
+              </Link>
             ))}
           </Menu>
         </Box>

@@ -22,7 +22,7 @@ return(
           id={window.location.pathname == value.link ? "active" : ""}
           key={key}
           className= "row"
-          onClick={()=> window.location.pathname = value.link}>
+          to={value.link}>
               <div>{value.title}</div>
           </Link>
         })}

@@ -24,6 +24,11 @@ const Posts = db.define('posts',{
         type: DataTypes.TEXT,
         allowNull: true
     },
+    active:{
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+    }
+    ,
     creator_id:{
         type: DataTypes.INTEGER,
         allowNull: true
