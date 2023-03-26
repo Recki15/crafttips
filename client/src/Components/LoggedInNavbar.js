@@ -80,7 +80,7 @@ function LoggedInNavbar() {
     }
 
   return (
-    <AppBar position="static" style={{background:'#222831'}}>
+    <AppBar position="static" style={{background:'#222831', boxShadow:"none"}}>
     <Container maxWidth="xl">
       <Toolbar disableGutters>
         

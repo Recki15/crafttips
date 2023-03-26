@@ -1,16 +1,11 @@
-html,
-body {
+html{
   height: 100%;
-  background: #393e46;
 }
-.gradient-custom-3 {
+body {
+  min-height: 100%;
   background: #222831;
-  background: -webkit-linear-gradient(
-    to bottom,
-    rgba(34, 40, 49),
-    rgba(0, 173, 181)
-  );
-  background: linear-gradient(to bottom, rgba(34, 40, 49), rgba(0, 173, 181));
+  background: -webkit-linear-gradient(to bottom, #222831 8%,#00ADB5 );
+  background: linear-gradient(to bottom, #222831 8%, #00ADB5 ); 
 }
 
 .box-shadow {

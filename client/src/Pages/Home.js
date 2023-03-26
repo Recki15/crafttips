@@ -15,6 +15,8 @@ import { color } from '@mui/system';
 
 
 export const Home = () => {
+  
+  
   const [name, setName] = useState('');
   const [ispost, setpost] = useState([]);
   const navigate = useNavigate();
