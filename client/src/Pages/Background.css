@@ -41,3 +41,29 @@ body {
 #post{
   word-wrap: break-word
 }
+
+.postImgdiv{
+  text-align: center;
+  padding-bottom: 40px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.postTitle{
+  color: #EEEEEE;
+  font-size: 350%;
+  padding-bottom: 60px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.postLongdesc{
+  padding-bottom: 40px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.posth2{
+  color: #EEEEEE;
+  font-size: 250%;
+  padding-bottom: 20px; 
+  margin-left: 10%;
+  margin-right: 10%;
+}

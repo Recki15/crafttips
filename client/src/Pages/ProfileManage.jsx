@@ -14,6 +14,7 @@ import jwt_decode from "jwt-decode";
 
 export default function ProfileManage() {
 
+ 
   const [name, setName] = useState('');
   const [ispost, setpost] = useState([]);
   const navigate = useNavigate();

@@ -11,7 +11,6 @@ import { CardActionArea, Grid } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import "./Background.css";
 import { format, parseISO } from 'date-fns'
-import { color } from '@mui/system';
 
 
 export const Home = () => {
@@ -47,7 +46,7 @@ export const Home = () => {
 
       const navbarDecider = () =>{
         if(name.length > 0) {
-          return <LoggedInNavbar />
+          return <LoggedInNavbar/>
         }else{
           return <LandingNavBar />}
       }

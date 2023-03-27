@@ -56,9 +56,16 @@ export const Posts = () => {
                 </Grid>
                 <Grid item xs={8}>
                     <div id='postWrap'>
+                        <div className='postImgdiv'>
+                        <img src={ispost.cover_image} className='postImg'></img>
+                        </div>
+                        <div className='postTitle'>
                         <h1>{ispost.title}</h1>
-                        <img src={ispost.cover_image}></img>
+                        </div>
+                        <h2 className='posth2'>About this item</h2>
+                        <div className='postLongdesc'>
                         <div dangerouslySetInnerHTML={{ __html: ispost.long_desc}}  id="post"/>
+                        </div>
                     </div>
                 </Grid>
                 <Grid item xs={2}>
