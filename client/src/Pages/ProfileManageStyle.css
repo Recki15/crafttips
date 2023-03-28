@@ -22,6 +22,18 @@
     background-color: grey;
 }
 
+
+.mainTexts{
+  color: #393E46;
+}
+
+.otherTexts{
+  color: #00ADB5;
+}
+
+.MDBText{
+  color: #222831;
+}
 /*div{
     border: 1px solid black;
   }*/

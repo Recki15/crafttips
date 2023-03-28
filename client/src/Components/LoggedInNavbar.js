@@ -127,7 +127,6 @@ function LoggedInNavbar() {
           const response = await axios.get('http://localhost:5000/token');
           const decoded = jwt_decode(response.data.accessToken);
           setAccName(decoded.name);
-          console.log(typeof decoded.name);
       } catch (error) {
           if (error.response) {
           }

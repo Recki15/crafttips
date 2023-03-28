@@ -28,6 +28,9 @@ useEffect(() => {
           const response = await axios.get('http://localhost:5000/token');
           const decoded = jwt_decode(response.data.accessToken);
           setName(decoded.name);
+          if(decoded.permission_level !== 1){
+            navigate("/");
+        }
       } catch (error) {
           if (error.response) {
           }
@@ -57,7 +60,7 @@ return(
         <Grid container rowSpacing={-5} columnSpacing={{ xs: -1, sm: -2, md: -1 }}>
           {ispost.map((item,index) => ( 
             <Card sx={{ maxWidth: 345, margin: "10px"}} key={index}>
-              <CardActionArea component={Link} to={'posts/'+item.id}>
+              <CardActionArea component={Link} to={'admindecide/posts/'+item.id}>
                 <CardMedia
                   component="img"
                   height="140"

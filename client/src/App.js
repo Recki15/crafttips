@@ -15,6 +15,7 @@ import ProfileEditor  from "./Pages/ProfileEditor";
 import {Admin} from "./Pages/Admin/Admin";
 import { Posts } from "./Pages/Posts";
 import { GeneralPageNotFound } from "./Pages/GeneralPageNotFound";
+import { Edit } from "./Pages/Edit";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                 <Route path='*'  element={<><GeneralPageNotFound /></>} />
                 <Route path='/'  element={<><Home /></>} />
                 <Route path='/posts/:ids'  element={<><Posts /></>} />
+                <Route path='/editpost/:ids' element={<><LoggedInNavbar /> <Edit /></>} />
                 <Route path='/logout' element={<Logout />} />
                 <Route path="/Contact" element={<><LoggedInNavbar /><ContactUs /></>} />
                 <Route path="/add" element={<><LoggedInNavbar /> <Add /></>} />
