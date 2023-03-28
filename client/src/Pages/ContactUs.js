@@ -30,7 +30,7 @@ export const ContactUs = () => {
     </div>
     <hr className="my-4" />
     <div className="text-center">
-      <button className="w-25 btn btn-primary btn-lg" type="submit" style={{ backgroundColor: "#4A3333" , color: "#98D083"}}>Send</button>
+      <button className="w-25 btn btn-primary btn-lg" type="submit">Send</button>
             </div>
         </form>
     </div>
