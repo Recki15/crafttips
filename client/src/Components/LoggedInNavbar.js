@@ -19,6 +19,8 @@ import { Link } from 'react-router-dom';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import { Stack } from '@mui/material';
+import jwt_decode from "jwt-decode";
 
 
 
@@ -107,6 +109,31 @@ function LoggedInNavbar() {
           console.log("Looking for something? Might find it if you register/log in! ;)");
         }
     }
+
+
+    
+
+    const [accname, setAccName]= useState('');
+    const [randomColor, setrandomColor] = useState();
+    {/*const colors = ["red","blue","green"];*/}
+
+    useEffect(() => {
+      refreshToken();
+      {/*setrandomColor(colors[Math.floor(Math.random() * colors.length)]);*/}
+      }, []);
+      
+    const refreshToken = async () => {
+      try {
+          const response = await axios.get('http://localhost:5000/token');
+          const decoded = jwt_decode(response.data.accessToken);
+          setAccName(decoded.name);
+          console.log(typeof decoded.name);
+      } catch (error) {
+          if (error.response) {
+          }
+      }
+    }
+    
 
   return (
     <AppBar position="static" style={{background:'#222831', boxShadow:"none"}}>
@@ -204,7 +231,9 @@ function LoggedInNavbar() {
           
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+            <Stack direction="row" spacing={2}>
+            <Avatar sx={{ bgcolor: "#222831", color: "#00ADB5"} } status="succes">{(accname.substring(0,2)).toUpperCase()}</Avatar>
+            </Stack>
             </IconButton>
           </Tooltip>
           <Menu
