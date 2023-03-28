@@ -12,20 +12,29 @@ export const Register = () => {
     const [msg, setMsg] = useState('');
     let navigate = useNavigate();
 
+    function hasWhiteSpace(s) {
+        return s.indexOf(' ') >= 0;
+      }
+
     const Register = async (e) => {
         e.preventDefault();
-        try {
-            await axios.post('http://localhost:5000/users', {
-                name: name,
-                email: email,
-                password: password,
-                confPassword: confPassword
-            });
-            navigate("/");
-        } catch (error) {
-            if (error.response) {
-                setMsg(error.response.data.msg);
-                hasError(error.response.data.msg);
+        if (hasWhiteSpace(name)) {
+                setMsg("Your name must not contain whitespace!");
+                hasError("Your name must not contain whitespace!");
+        }else{
+            try {
+                await axios.post('http://localhost:5000/users', {
+                    name: name,
+                    email: email,
+                    password: password,
+                    confPassword: confPassword
+                });
+                navigate("/");
+            } catch (error) {
+                if (error.response) {
+                    setMsg(error.response.data.msg);
+                    hasError(error.response.data.msg);
+                }
             }
         }
     }

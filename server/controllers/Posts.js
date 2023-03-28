@@ -90,6 +90,21 @@ export const findPostById = async(req, res) => {
     }
 }
 
+export const findPostByUserId = async(req, res) => {
+    try {
+        const post = await Posts.findAll(
+            {
+                attributes: ['id', 'title', 'cover_image', 'long_desc', 'active', 'creator_id'],
+                where: {creator_id: req.params.id}
+            },
+        )
+        res.json(post);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({ msg: "Error!" });
+    }
+}
+
 export const deletePost = async(req, res) => {
     try {
         const post = await Posts.destroy(
