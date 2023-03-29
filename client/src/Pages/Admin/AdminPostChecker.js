@@ -19,7 +19,7 @@ export const AdminPostChecker = () => {
         try {
             const response = await axios.get('http://localhost:5000/token');
             const decoded = jwt_decode(response.data.accessToken);
-            if(decoded.permission_level !== 1){
+            if(decoded.permission_level < 1){
                 navigate("/");
             }
         } catch (error) {

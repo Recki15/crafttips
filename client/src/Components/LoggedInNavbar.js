@@ -231,7 +231,7 @@ function LoggedInNavbar() {
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
             <Stack direction="row" spacing={2}>
-            <Avatar sx={{ bgcolor: "#222831", color: "#00ADB5"} } status="succes">{(accname.substring(0,2)).toUpperCase()}</Avatar>
+            <Avatar sx={{ bgcolor: "#222831", color: "#00ADB5"} }>{(accname.substring(0,2)).toUpperCase()}</Avatar>
             </Stack>
             </IconButton>
           </Tooltip>

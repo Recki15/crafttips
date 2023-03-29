@@ -4,7 +4,7 @@ import Posts from "../models/PostModel.js";
 export const getPosts = async (req, res) => {
     try {
         const posts = await Posts.findAll({
-            attributes: ['id', 'title', 'cover_image', 'short_desc']
+            attributes: ['id', 'title', 'cover_image', 'short_desc', 'creator_id']
         });
         res.json(posts);
     } catch (error) {
@@ -15,7 +15,7 @@ export const getPosts = async (req, res) => {
 export const getActivePosts = async (req, res) => {
     try {
         const posts = await Posts.findAll({
-            attributes: ['id', 'title', 'cover_image', 'short_desc', 'updatedAt', 'tools'],
+            attributes: ['id', 'title', 'cover_image', 'short_desc', 'creator_id','updatedAt', 'tools'],
             where: {active : 1}
         });
         res.json(posts);

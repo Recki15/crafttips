@@ -12,6 +12,7 @@ import { AdminPostChecker } from "./Pages/Admin/AdminPostChecker";
 import { AdminDecide } from "./Pages/Admin/AdminDecide";
 import ProfileManage  from "./Pages/ProfileManage";
 import ProfileEditor  from "./Pages/ProfileEditor";
+import Profile  from "./Pages/Profile";
 import {Admin} from "./Pages/Admin/Admin";
 import { Posts } from "./Pages/Posts";
 import { GeneralPageNotFound } from "./Pages/GeneralPageNotFound";
@@ -26,16 +27,17 @@ function App() {
                 <Route path='/posts/:ids'  element={<><Posts /></>} />
                 <Route path='/editpost/:ids' element={<><LoggedInNavbar /> <Edit /></>} />
                 <Route path='/logout' element={<Logout />} />
-                <Route path="/Contact" element={<><LoggedInNavbar /><ContactUs /></>} />
+                <Route path="/contactus" element={<><LoggedInNavbar /><ContactUs /></>} />
                 <Route path="/add" element={<><LoggedInNavbar /> <Add /></>} />
                 <Route path="/admin" element={<><LoggedInNavbar /> <Admin /></>} />
-                <Route path='/Login' element={<><LandingNavBar /> <Login /></>} />
-                <Route path='/Register' element={<><LandingNavBar /> <Register /></>} />
+                <Route path='/login' element={<><LandingNavBar /> <Login /></>} />
+                <Route path='/register' element={<><LandingNavBar /> <Register /></>} />
                 <Route path='/admin/Dashboard' element={<><LoggedInNavbar /> <Dashboard /> </>} />
-                <Route path='/ProfileManage' element={<><LoggedInNavbar /> <ProfileManage /> </>} />
+                <Route path='/profileManage' element={<><LoggedInNavbar /> <ProfileManage /> </>} />
                 <Route path='/admin/admindecide/posts/:ids' element={<><LoggedInNavbar /> <AdminPostChecker /> </>} />
                 <Route path='/admin/admindecide' element={<><LoggedInNavbar /> <AdminDecide /> </>} />
-                <Route path='/ProfileManage/edit' element={<><LoggedInNavbar /> <ProfileEditor /> </>} />
+                <Route path='/profileManage/edit' element={<><LoggedInNavbar /> <ProfileEditor /> </>} />
+                <Route path='/profile/:ids' element={<><LoggedInNavbar /> <Profile /> </>} />
             </Routes>
         </Router>
 

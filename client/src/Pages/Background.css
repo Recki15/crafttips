@@ -38,6 +38,7 @@ body {
   background-color: #222831;
 }
 
+
 #post{
   word-wrap: break-word
 }
@@ -66,4 +67,12 @@ body {
   padding-bottom: 20px; 
   margin-left: 10%;
   margin-right: 10%;
+}
+
+.profAvatar{
+  text-align: center;
+}
+
+.dec{
+  background-color: #393E46;
 }

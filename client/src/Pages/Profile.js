@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
 import './ProfileManageStyle.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Grid } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -12,8 +12,9 @@ import { format, parseISO } from 'date-fns';
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
 
-export default function ProfileManage() {
+export default function Profile() {
 
+  const ids = useParams();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('');
@@ -27,7 +28,7 @@ export default function ProfileManage() {
         try {
             const response = await axios.get('http://localhost:5000/token');
             const decoded = jwt_decode(response.data.accessToken);
-            viewPost(decoded.userId);
+            viewPost(Number(ids));
             setName(decoded.name);
             setEmail(decoded.email);
             setRole(decoded.permission_level);
@@ -79,9 +80,6 @@ export default function ProfileManage() {
               </div>
               <div className="p-4 text-black" style={{ backgroundColor: '#f8f9fa' }}>
                 <div>
-                  <div style={{width: "250px", float: "left"}}>
-                    <Link to="/ProfileManage/edit"><button className='editbutton'>Edit Profile</button></Link>
-                  </div>
                   <div style={{width: "50px", float: "right"}}>
                     <MDBCardText className="mb-1 h5">{ispost.length}</MDBCardText>
                     <MDBCardText className="small text-muted mb-0">Posts</MDBCardText>
