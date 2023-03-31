@@ -48,7 +48,7 @@ const SearchPage = () => {
       <div className="container mt-5">
         <Form onSubmit={handleSearchSubmit}>
           <FormGroup className="mb-3 d-flex align-items-center">
-            <input type="text" class="form-control" id="" value={searchQuery} onChange={handleSearchQueryChange} placeholder="Search" required="" />
+            <input type="search" class="form-control" id="" value={searchQuery} onChange={handleSearchQueryChange} placeholder="Search" required="" />
           </FormGroup>
           <FormGroup className="mb-3 d-flex align-items-center">
             <label>Filter by:</label>

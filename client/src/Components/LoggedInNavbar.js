@@ -77,6 +77,7 @@ function LoggedInNavbar() {
   const menu = [
     {name:"Home", url:"/"},
     {name:"Add", url:"/add"},
+    {name:"Contact Us", url:"/ContactUs"},
     {name:"Admin", url:"/admin"}];
 
   const settings = [{name:"Profile", url:"/ProfileManage"},{name:"Logout", url:"/logout"}];

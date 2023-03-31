@@ -8,10 +8,10 @@ export const ContactUs = () => {
         <div className="row g-3">
             
         <div className="col-12">
-            <label htmlFor="email" className="form-label">
+            <label htmlFor="title" className="form-label">
             Title <span className="text-muted" />
             </label>
-            <input type="email" className="form-control" id="email" placeholder="title"/>
+            <input type="text" className="form-control" id="title" placeholder="title"/>
         <div className="invalid-feedback">
         </div>
       </div>
