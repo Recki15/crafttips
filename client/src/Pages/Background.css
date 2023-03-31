@@ -76,3 +76,76 @@ body {
 .dec{
   background-color: #393E46;
 }
+
+.welcomehead{
+  height: 300px;
+  margin: 0;
+  background: linear-gradient(0.8turn, #222831 40%, #00ADB5);
+  background: -webkit-linear-gradient(0.8turn, #222831 40%, #00ADB5);
+}
+.welcomeh1{
+  color: #00ADB5;
+  font-size: 70px;
+  font-family: monospace;
+  margin-left: 150px;
+}
+
+.welcomeh2{
+  margin-top: 50px;
+  color: #00ADB5;
+  font-size: 70px;
+  font-family: monospace;
+  margin-left: 150px;
+}
+
+
+.welcomebutton{
+  margin-left: 150px;
+  color: #00ADB5;
+  background-color: #393E46;
+  border: none;
+  border-radius: 20px;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.welcomep, .welcomep2{
+  color: #393E46;
+  font-size: 40px;
+  font-family: cursive;
+  margin-left: 1400px;
+}
+.welcomep2{
+  margin-top: 0px;
+}
+
+
+.ttddiv{
+  height: 300px;
+  background: linear-gradient(-0.8turn, #222831 40%, #00ADB5);
+  background: -webkit-linear-gradient(-0.8turn, #222831 40%, #00ADB5);
+}
+
+.welcomegrid{
+  margin-top: 90px;
+}
+
+.welcomegrid3{
+text-align: center;
+font-size: 20px;
+}
+
+.weicon{
+  height: 40px;
+  width: 40px;
+  color: #00ADB5;
+  margin-bottom: 10px;
+}
+
+.weicon2{
+  height: 40px;
+  width: 40px;
+  color: #222831;
+  margin-bottom: 10px;
+}
+

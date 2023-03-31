@@ -135,7 +135,7 @@ function LoggedInNavbar() {
     
 
   return (
-    <AppBar position="static" style={{background:'#222831', boxShadow:"none"}}>
+    <AppBar className='appbar' position="on-top" style={{background:'#222831', boxShadow:"none"}}>
     <Container maxWidth="xl">
       <Toolbar disableGutters>
         
