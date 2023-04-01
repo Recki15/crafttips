@@ -18,6 +18,7 @@ import { Posts } from "./Pages/Posts";
 import { GeneralPageNotFound } from "./Pages/GeneralPageNotFound";
 import { Edit } from "./Pages/Edit";
 import SearchPage from "./Pages/Search";
+import { Faq } from "./Pages/Faq";
 
 function App() {
     return (
@@ -31,6 +32,7 @@ function App() {
                 <Route path="/contactus" element={<><LoggedInNavbar /><ContactUs /></>} />
                 <Route path="/add" element={<><LoggedInNavbar /> <Add /></>} />
                 <Route path="/Search" element={<><LoggedInNavbar /> <SearchPage /></>} />
+                <Route path="/Faq" element={<><LoggedInNavbar /> <Faq /></>} />
                 <Route path="/admin" element={<><LoggedInNavbar /> <Admin /></>} />
                 <Route path='/login' element={<><LandingNavBar /> <Login /></>} />
                 <Route path='/register' element={<><LandingNavBar /> <Register /></>} />
