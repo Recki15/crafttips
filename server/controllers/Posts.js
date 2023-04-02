@@ -24,6 +24,19 @@ export const getActivePosts = async (req, res) => {
     }
 }
 
+export const get10ActivePosts = async (req, res) => {
+    try {
+        const posts = await Posts.findAll({
+            attributes: ['id', 'title', 'cover_image', 'short_desc', 'creator_id','updatedAt', 'tools'],
+            where: {active : 1},
+            limit: 10
+        });
+        res.json(posts);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export const getInactivePosts = async (req, res) => {
     try {
         const posts = await Posts.findAll({

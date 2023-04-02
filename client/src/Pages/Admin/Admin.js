@@ -32,7 +32,7 @@ useEffect(() => {
           const response = await axios.get('http://localhost:5000/token');
           const decoded = jwt_decode(response.data.accessToken);
           setName(decoded.name);
-          if(decoded.permission_level !== 1){
+          if(decoded.permission_level < 1){
             navigate("/");
         }
       } catch (error) {
@@ -105,6 +105,7 @@ return(
         </Grid>
         <Grid item xs={10} className="gridL">
         <div className='decidediv'>
+        <h1>Currently active posts </h1><br />
         <Grid container rowSpacing={-5} columnSpacing={{ xs: -1, sm: -2, md: -1 }}>
           {ispost.map((item,index) => ( 
            <Card sx={{ maxWidth: 250, margin: "10px"}} key={index}>
@@ -135,6 +136,7 @@ return(
                </Typography>
              </CardContent>
            </CardActionArea>
+           <button onClick={() => navigate(`/editpost/${item.id}`)} className="btn btn-warning">Edit post</button>
          </Card>
           ))} 
           </Grid>

@@ -26,7 +26,7 @@ export const Dashboard = () => {
             const decoded = jwt_decode(response.data.accessToken);
             setName(decoded.name);
             setExpire(decoded.exp);
-            if(decoded.permission_level !== 1){
+            if(decoded.permission_level < 1){
                 navigate("/");
             }
         } catch (error) {

@@ -15,6 +15,7 @@ import jwt_decode from "jwt-decode";
 export default function Profile() {
 
   const ids = useParams();
+  const [isAdmin, setIsAdmin] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('');
@@ -28,10 +29,8 @@ export default function Profile() {
         try {
             const response = await axios.get('http://localhost:5000/token');
             const decoded = jwt_decode(response.data.accessToken);
-            viewPost(Number(ids));
-            setName(decoded.name);
-            setEmail(decoded.email);
-            setRole(decoded.permission_level);
+            viewPost(Number(ids.ids));
+            setIsAdmin(decoded.permission_level);
         } catch (error) {
             if (error.response) {
             }
@@ -45,6 +44,18 @@ export default function Profile() {
               setpost(res.data);
           })
         } catch (error) { throw error;}
+        getUser(e);
+      }
+
+      const getUser = (e) => {
+        try{
+          axios.get(`http://localhost:5000/getuser/${e}`)
+          .then(res => {
+            setName(res.data.name);
+            setEmail(res.data.email);
+            setRole(res.data.permission_level);
+          })
+        }catch(error) {throw error}
       }
   
       const titleDecider = () => {

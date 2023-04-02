@@ -75,12 +75,13 @@ export const Home = () => {
 
       const viewPost = async() =>{
         try {
-          axios.get(`http://localhost:5000/activePosts`)
+          axios.get(`http://localhost:5000/10activePosts`)
           .then(res => { 
               setpost(res.data);
           })
         } catch (error) { throw error;}
       }
+
 
       const navbarDecider = () =>{
         if(name.length > 0) {

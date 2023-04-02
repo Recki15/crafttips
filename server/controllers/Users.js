@@ -13,6 +13,18 @@ export const getUsers = async (req, res) => {
     }
 }
 
+export const getUser = async (req, res) => {
+    try {
+        const users = await Users.findOne({
+            attributes: ['id', 'name', 'email', 'permission_level'],
+            where: {id: req.params.id}
+        });
+        res.json(users);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export const Register = async (req, res) => {
     const { name, email, password, confPassword } = req.body;
     if (password !== confPassword) return res.status(400).json({ msg: "Passwords do not match" });
