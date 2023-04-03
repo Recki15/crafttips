@@ -39,6 +39,7 @@ body {
 }
 
 
+
 #post{
   word-wrap: break-word
 }
@@ -143,9 +144,24 @@ font-size: 20px;
 }
 
 .weicon2{
-  height: 40px;
-  width: 40px;
-  color: #222831;
+  height: 30px;
+  width: 30px;
+  color: #00ADB5;
   margin-bottom: 10px;
 }
 
+.switch{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.switchgrid{
+  justify-content: center;
+  /*position: fixed;*/
+  
+}
+
+.iconbutton{
+  color: white;
+}

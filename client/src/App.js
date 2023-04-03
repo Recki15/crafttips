@@ -19,6 +19,7 @@ import { GeneralPageNotFound } from "./Pages/GeneralPageNotFound";
 import { Edit } from "./Pages/Edit";
 import SearchPage from "./Pages/Search";
 import { Faq } from "./Pages/Faq";
+import { Feed } from "./Pages/Feed";
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
             <Routes>
                 <Route path='*'  element={<><GeneralPageNotFound /></>} />
                 <Route path='/'  element={<><Home /></>} />
+                <Route path='/feed' element={<Feed />} />
                 <Route path='/posts/:ids'  element={<><Posts /></>} />
                 <Route path='/editpost/:ids' element={<><LoggedInNavbar /> <Edit /></>} />
                 <Route path='/logout' element={<Logout />} />

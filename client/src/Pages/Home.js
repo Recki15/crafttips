@@ -2,15 +2,18 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
 import LandingNavBar from '../Components/LandingNavbar';
+import {Welcome} from './Welcome';
 import LoggedInNavbar from '../Components/LoggedInNavbar';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Avatar, CardActionArea, Grid } from '@mui/material';
+import { AppBar, Avatar, ButtonGroup, CardActionArea, FormControlLabel, FormGroup, Grid, IconButton, Menu } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import "./Background.css";
 import { format, parseISO } from 'date-fns'
+import { styled } from '@mui/material/styles';
+import Switch from '@mui/material/Switch';
 import { GiCrafting } from "react-icons/gi";
 import { MdRecycling} from "react-icons/md";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -90,6 +93,13 @@ export const Home = () => {
           return <LandingNavBar />}
       }
 
+      const welcomeDecider = () =>{
+        if(name.length > 0) {
+          return 
+        }else{
+          return <Welcome/>}
+      }
+
       const Profile = (e) =>{
         for (let i = 0; i< users.length; i++) {
           if (users[i].id === e) {
@@ -109,96 +119,55 @@ export const Home = () => {
       }
 
       
+      
   return (
     <>
-        {navbarDecider()}
-        <div className='gradient-custom-3'>
-          <div className='welcomehead'>
-            <br/>
-            <br/>
-            <br/>
-              <h2 className='welcomeh2'>WELCOME TO</h2>
-              <h1 className='welcomeh1'>CRAFTTIPS</h1>
-              <Link to='/register'><button className='welcomebutton' >Register now!</button></Link>
-              <p className='welcomep'>be a man!</p>
-          </div>
-          <div className='ttddiv'>
-          <p className='welcomep2'>Be creative,</p>
-          <Grid container className='welcomegrid'>
-            <Grid item xs={2} >
-              
-            </Grid>
-            <Grid item xs={8}>
-              <Grid container  className='welcomegrid2' spacing={3}>
-                <Grid item xs={2} sm={2} className='welcomegrid3'>
-                  <GiCrafting className='weicon'/>
-                  <p>Cure your boredom and craft something!</p>
-                </Grid>
-                <Grid item xs={2} sm={2} className='welcomegrid3'>
-                  <AiOutlineSearch className='weicon'/>
-                  <p>Search and find amazing tips!</p>
-                </Grid>
-                <Grid item xs={2} sm={2} className='welcomegrid3'>
-                  <MdRecycling className='weicon'/>
-                  <p>Recycle your trash and save our world!</p>
-                </Grid>
-                <Grid item xs={2} sm={2} className='welcomegrid3'>
-                  <BiHomeAlt className='weicon'/>
-                  <p>Decorate your home by hand-made decor</p>
-                </Grid>
-                <Grid item xs={2} sm={2} className='welcomegrid3'>
-                  <CgFeed className='weicon'/>
-                  <p>Reach the feed of the communtity</p>
-                </Grid>
-                <Grid item xs={2}className='welcomegrid3'>
-                  <p>+6</p>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs={2}>
-            </Grid>
-          </Grid>
-          </div>
+
+      {navbarDecider()}
+      <div className='gradient-custom-3'>
+        {welcomeDecider()}
         <Grid container spacing={1}>
-        <Grid item xs={12} className="gridL">
-        <div className='decidediv'>
-        
-          <Grid container rowSpacing={-5} columnSpacing={{ xs: -1, sm: -2, md: -1 }} >
-          {ispost.map((item,index) => ( 
-            <Card sx={{ maxWidth: 250, margin: "10px" , backgroundColor: "#393E46", border: "2px solid #00ADB5",borderRadius: "15px", color:"#EEE"}} key={index}>
-            <CardActionArea component={Link} to={'/profile/'+item.creator_id}>   
-            {Profile(item.creator_id)}
-            </CardActionArea>
-            <CardActionArea component={Link} to={'posts/'+item.id}>
-              <CardMedia
-                component="img"
-                height="140"
-                image={item.cover_image}
-                alt="green iguana"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div" color="#EEE">
-                {item.title}
-                
-                </Typography>
-                <Typography variant="body2" color="#EEE">
-                  {item.short_desc}
-                </Typography>
-                <Typography gutterBottom variant="h9" component="div">
-                <br />
-                <p style={{borderTop:'1px solid black', color:'#00ADB5'}}>Updated at: {format(parseISO(item.updatedAt),"yyyy-MM-dd")}</p> 
-                <p style={{color:'#00ADB5'}}>Tools needed: {item.tools}</p>
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-          ))} 
+          <Grid item xs={12} className="gridL">
+            <div className='decidediv'>
+              <Grid container rowSpacing={-5} columnSpacing={{ xs: -1, sm: -2, md: -1 }} >
+                {ispost.map((item, index) => (
+                  <Card sx={{ maxWidth: 250, margin: "10px", backgroundColor: "#393E46", border: "2px solid #00ADB5", borderRadius: "15px", color: "#EEE" }} key={index}>
+                    <CardActionArea component={Link} to={'/profile/' + item.creator_id}>
+                      {Profile(item.creator_id)}
+                    </CardActionArea>
+                    <CardActionArea component={Link} to={'posts/' + item.id}>
+                      <CardMedia
+                        component="img"
+                        height="140"
+                        image={item.cover_image}
+                        alt="green iguana"
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div" color="#EEE">
+                          {item.title}
+
+                        </Typography>
+                        <Typography variant="body2" color="#EEE">
+                          {item.short_desc}
+                        </Typography>
+                        <Typography gutterBottom variant="h9" component="div">
+                          <br />
+                          <p style={{ borderTop: '1px solid black', color: '#00ADB5' }}>Updated at: {format(parseISO(item.updatedAt), "yyyy-MM-dd")}</p>
+                          <p style={{ color: '#00ADB5' }}>Tools needed: {item.tools}</p>
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+
+                ))}
+              </Grid>
+            </div>
+
           </Grid>
-          </div>
+          
+        </Grid>
         
-        </Grid>
-        </Grid>
-        </div>
+      </div>
     </>
   )
 }

@@ -80,6 +80,12 @@ function LoggedInNavbar() {
     {name:"Contact Us", url:"/ContactUs"},
     {name:"Admin", url:"/admin"}];
 
+    const menu2 = [
+      {name:"FAQ", url:"/faq"},
+      {name:"Add", url:"/add"},
+      {name:"Contact Us", url:"/ContactUs"},
+      {name:"Admin", url:"/admin"}];
+
   const settings = [{name:"Profile", url:"/ProfileManage"},{name:"Logout", url:"/logout"}];
   
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -159,7 +165,7 @@ function LoggedInNavbar() {
           CRAFTTIPS 
         </Typography>
 
-        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none'} }}>
+        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none'}}}>
           <IconButton
             size="large"
             aria-label="account of current user"
@@ -194,16 +200,16 @@ function LoggedInNavbar() {
             {menu.map((page, index) => (
               <Link to={page.url}  key={index}>
               <MenuItem onClick={handleCloseNavMenu} >
-                <Typography textAlign="center">{page.name}</Typography>
+                <Typography textAlign="center" >{page.name}</Typography>
               </MenuItem>
               </Link>
             ))}
           </Menu>
         </Box>
-        <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
        
-        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          {menu.map((page, index) => (
+       
+        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent:"center", marginLeft:"100px"}}>
+          {menu2.map((page, index) => (
             <Button
               key={index}
               onClick={handleCloseNavMenu}
@@ -215,11 +221,12 @@ function LoggedInNavbar() {
           ))}
           
         </Box>
-        <Box sx={{ flexGrow: 0, marginRight:"20px" }}>
+        <Box sx={{ flexGrow: 0, marginRight:"20px", marginLeft:"30px", display: { xs: 'absolute', md: 'flex' }, justifyContent:"right"}}>
         <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
+            
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
