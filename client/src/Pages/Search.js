@@ -1,5 +1,19 @@
 import React, { useState } from 'react';
-import { Form, FormGroup, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Form, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { useEffect } from 'react'
+import axios from 'axios';
+import jwt_decode from "jwt-decode";
+import LandingNavBar from '../Components/LandingNavbar';
+import {Welcome} from './Welcome';
+import LoggedInNavbar from '../Components/LoggedInNavbar';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { AppBar, Avatar, ButtonGroup, CardActionArea, FormControlLabel, FormGroup, Grid, IconButton, Menu } from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
+import "./Background.css";
+import { format, parseISO } from 'date-fns'
 
 const SearchPage = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -43,12 +57,93 @@ const SearchPage = () => {
         (!option3 || result.option3)
       );
     });
+
+  
+  const [ispost, setpost] = useState([]);
+  const [token, setToken] = useState('');
+  const [expire, setExpire] = useState('');
+  const [name, setName] = useState('');
+  const [creatorID, setCreatorID] = useState('');
+  const [userID, setUserID] = useState('');
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    viewPost()
+    getUsers()
+    }, []);
+
+
+    const searchInput = (e) => {
+      for (let index = 0; index < ispost.length; index++) {
+        if (ispost[index].title.replace(/\s+/g, '').toLowerCase().includes(e.replace(/\s+/g, '').toLowerCase())) {
+          document.getElementById(ispost[index].id).style.height="auto"
+          document.getElementById(ispost[index].id).style.width="auto"
+        } else {
+          document.getElementById(ispost[index].id).style.height="0"
+          document.getElementById(ispost[index].id).style.width="0"
+        }
+      }
+    }
+
+    const viewPost = async(e) =>{
+      try {
+        axios.get(`http://localhost:5000/activePosts`)
+        .then(res => { 
+            setpost(res.data);
+        })
+      } catch (error) { throw error;}
+    }
+
+    const getUsers = async () => {
+      const response = await axiosJWT.get('http://localhost:5000/users', {
+          headers: {
+              Authorization: `Bearer ${token}`
+          }
+      });
+      setUsers(response.data);
+  }
+
+  const axiosJWT = axios.create();
+
+  axiosJWT.interceptors.request.use(async (config) => {
+      const currentDate = new Date();
+      if (expire * 1000 < currentDate.getTime()) {
+          const response = await axios.get('http://localhost:5000/token');
+          config.headers.Authorization = `Bearer ${response.data.accessToken}`;
+          setToken(response.data.accessToken);
+          const decoded = jwt_decode(response.data.accessToken);
+          setName(decoded.name);
+          setExpire(decoded.exp);
+          setUserID(decoded.id);
+      }
+      return config;
+  }, (error) => {
+      return Promise.reject(error);
+  });
+
+    const Profile = (e) =>{
+      for (let i = 0; i< users.length; i++) {
+        if (users[i].id === e) {
+          let name = users[i].name;
+          return (
+            <Grid container>
+              <Grid item xs={2}>
+                <Avatar sx={{ bgcolor: "#222831", color: "#00ADB5", margin: "5px" }}>{(name.substring(0, 2)).toUpperCase()}</Avatar>
+              </Grid>
+              <Grid item xs={3} marginTop={"10px"} marginLeft={"5px"} textAlign={"center"}>
+                {name}
+              </Grid>
+            </Grid>
+            )
+        }
+      }
+    }
   
     return (
       <div className="container mt-5">
         <Form onSubmit={handleSearchSubmit}>
           <FormGroup className="mb-3 d-flex align-items-center">
-            <input type="search" class="form-control" id="" value={searchQuery} onChange={handleSearchQueryChange} placeholder="Search" required="" />
+            <input type="search" class="form-control" id="" onChange={(e) => searchInput(e.target.value)} placeholder="Search" required="" />
           </FormGroup>
           <FormGroup className="mb-3 d-flex align-items-center">
             <label>Filter by:</label>
@@ -89,18 +184,48 @@ const SearchPage = () => {
               </label>
             </FormGroup>
           </FormGroup>
-          <FormGroup className="d-flex justify-content-center">
-            <Button type="submit" color="primary">Search</Button>
-          </FormGroup>
+          <hr/>
         </Form>
-        <hr />
-        <ListGroup>
-          {filteredResults.map((result) => (
-            <ListGroupItem key={result.id}>
-              {result.title}
-            </ListGroupItem>
-          ))}
-        </ListGroup>
+        <Grid container spacing={1}>
+          <Grid item xs={12} className="gridL">
+            <div className='decidediv'>
+              <Grid container rowSpacing={-5} columnSpacing={{ xs: -1, sm: -2, md: -1 }} >
+                {ispost.map((item, index) => (
+                  <Card sx={{ maxWidth: 250, margin: "10px", backgroundColor: "#393E46", border: "2px solid #00ADB5", borderRadius: "15px", color: "#EEE" }} key={index} id={item.id}>
+                    <CardActionArea component={Link} to={'/profile/' + item.creator_id}>
+                      {Profile(item.creator_id)}
+                    </CardActionArea>
+                    <CardActionArea component={Link} to={'posts/' + item.id}>
+                      <CardMedia
+                        component="img"
+                        height="140"
+                        image={item.cover_image}
+                        alt="green iguana"
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div" color="#EEE">
+                          {item.title}
+
+                        </Typography>
+                        <Typography variant="body2" color="#EEE">
+                          {item.short_desc}
+                        </Typography>
+                        <Typography gutterBottom variant="h9" component="div">
+                          <br />
+                          <p style={{ borderTop: '1px solid black', color: '#00ADB5' }}>Updated at: {format(parseISO(item.updatedAt), "yyyy-MM-dd")}</p>
+                          <p style={{ color: '#00ADB5' }}>Tools needed: {item.tools}</p>
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+
+                ))}
+              </Grid>
+            </div>
+
+          </Grid>
+          
+        </Grid>
       </div>
     );
   };

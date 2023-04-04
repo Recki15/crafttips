@@ -230,7 +230,6 @@ function LoggedInNavbar() {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
-              
             />
           </Search>
         </Box>
