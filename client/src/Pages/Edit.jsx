@@ -103,7 +103,7 @@ const viewPostById = async(a,b) =>{
           return;
         }
 
-        await axios.post(`http://localhost:5000/updatePost/${Number(ids)}`, {
+        await axios.put(`http://localhost:5000/updatePost/${Number(ids)}`, {
           title: userInfo.title,
           cover_image: cover_image,
           short_desc: userInfo.short_desc,

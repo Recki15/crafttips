@@ -78,13 +78,15 @@ function LoggedInNavbar() {
     {name:"Home", url:"/"},
     {name:"Add", url:"/add"},
     {name:"Contact Us", url:"/ContactUs"},
-    {name:"Admin", url:"/admin"}];
+    {name:"Admin", url:"/admin"},
+    {name:"Advanced search", url:"/search"}];
 
     const menu2 = [
       {name:"FAQ", url:"/faq"},
       {name:"Add", url:"/add"},
       {name:"Contact Us", url:"/ContactUs"},
-      {name:"Admin", url:"/admin"}];
+      {name:"Admin", url:"/admin"},
+      {name:"Advanced search", url:"/search"}];
 
   const settings = [{name:"Profile", url:"/ProfileManage"},{name:"Logout", url:"/logout"}];
   

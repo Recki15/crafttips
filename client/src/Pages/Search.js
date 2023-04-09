@@ -11,11 +11,13 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { AppBar, Avatar, ButtonGroup, CardActionArea, FormControlLabel, FormGroup, Grid, IconButton, Menu } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import "./Background.css";
 import { format, parseISO } from 'date-fns'
+import LandingNavbar from '../Components/LandingNavbar';
 
 const SearchPage = () => {
+    const { text } = useParams('');
     const [searchQuery, setSearchQuery] = useState('');
     const [filterOptions, setFilterOptions] = useState({
       option1: false,
@@ -60,18 +62,25 @@ const SearchPage = () => {
 
   
   const [ispost, setpost] = useState([]);
-  const [token, setToken] = useState('');
-  const [expire, setExpire] = useState('');
   const [name, setName] = useState('');
-  const [creatorID, setCreatorID] = useState('');
-  const [userID, setUserID] = useState('');
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
+    refreshToken();
     viewPost()
     getUsers()
     }, []);
 
+    const refreshToken = async () => {
+      try {
+          const response = await axios.get('http://localhost:5000/token');
+          const decoded = jwt_decode(response.data.accessToken);
+          setName(decoded.name);
+      } catch (error) {
+          if (error.response) {
+          }
+      }
+    }
 
     const searchInput = (e) => {
       for (let index = 0; index < ispost.length; index++) {
@@ -95,31 +104,13 @@ const SearchPage = () => {
     }
 
     const getUsers = async () => {
-      const response = await axiosJWT.get('http://localhost:5000/users', {
-          headers: {
-              Authorization: `Bearer ${token}`
-          }
-      });
-      setUsers(response.data);
-  }
-
-  const axiosJWT = axios.create();
-
-  axiosJWT.interceptors.request.use(async (config) => {
-      const currentDate = new Date();
-      if (expire * 1000 < currentDate.getTime()) {
-          const response = await axios.get('http://localhost:5000/token');
-          config.headers.Authorization = `Bearer ${response.data.accessToken}`;
-          setToken(response.data.accessToken);
-          const decoded = jwt_decode(response.data.accessToken);
-          setName(decoded.name);
-          setExpire(decoded.exp);
-          setUserID(decoded.id);
-      }
-      return config;
-  }, (error) => {
-      return Promise.reject(error);
-  });
+      try {
+      axios.get('http://localhost:5000/tokenlessUsers')
+      .then(res => {
+        setUsers(res.data);
+      })
+      } catch (error) { throw error;}
+    }
 
     const Profile = (e) =>{
       for (let i = 0; i< users.length; i++) {
@@ -139,11 +130,19 @@ const SearchPage = () => {
       }
     }
   
+    const navbarDecider = () =>{
+      if(name.length > 0) {
+        return <LoggedInNavbar/>
+      }else{
+        return <LandingNavbar />}
+    }
+
     return (
       <div className="container mt-5">
+        {navbarDecider()}
         <Form onSubmit={handleSearchSubmit}>
           <FormGroup className="mb-3 d-flex align-items-center">
-            <input type="search" class="form-control" id="" onChange={(e) => searchInput(e.target.value)} placeholder="Search" required="" />
+            <input type="search" class="form-control" id="" defaultValue={text} onChange={(e) => searchInput(e.target.value)} placeholder="Search" required="" />
           </FormGroup>
           <FormGroup className="mb-3 d-flex align-items-center">
             <label>Filter by:</label>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
+import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography } from 'mdb-react-ui-kit';
 import './ProfileManageStyle.css';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Grid } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -11,16 +11,16 @@ import { CardActionArea } from '@mui/material';
 import { format, parseISO } from 'date-fns';
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
+import LoggedInNavbar from '../Components/LoggedInNavbar';
+import LandingNavbar from '../Components/LandingNavbar';
 
 export default function Profile() {
 
   const ids = useParams();
-  const [isAdmin, setIsAdmin] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('');
   const [ispost, setpost] = useState([]);
-  const navigate = useNavigate();
   useEffect(() => {
     refreshToken();
     }, []);
@@ -30,7 +30,6 @@ export default function Profile() {
             const response = await axios.get('http://localhost:5000/token');
             const decoded = jwt_decode(response.data.accessToken);
             viewPost(Number(ids.ids));
-            setIsAdmin(decoded.permission_level);
         } catch (error) {
             if (error.response) {
             }
@@ -72,8 +71,16 @@ export default function Profile() {
         if(e === 2){return "Super Admin"}
       }
 
+      const navbarDecider = () =>{
+        if(name.length > 0) {
+          return <LoggedInNavbar/>
+        }else{
+          return <LandingNavbar />}
+      }
+
   return (
     <div className="gradient-custom-3">
+      {navbarDecider()}
       <MDBContainer className="py-5 h-100">
         <MDBRow className="justify-content-center align-items-center h-100">
           <MDBCol lg="9" xl="7">

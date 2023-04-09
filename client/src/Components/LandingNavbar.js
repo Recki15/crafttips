@@ -56,7 +56,7 @@ function LandingNavbar() {
       width: 'auto',
     },
   }));
-  
+
   const SearchIconWrapper = styled('div')(({ theme }) => ({
     padding: theme.spacing(0, 2),
     height: '100%',
@@ -66,7 +66,7 @@ function LandingNavbar() {
     alignItems: 'center',
     justifyContent: 'center',
   }));
-  
+
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
     '& .MuiInputBase-input': {
@@ -88,169 +88,174 @@ function LandingNavbar() {
    <Link to='/admindecide' style={{color: isHovering2 ? 'white' : '#00ADB5'}} onMouseEnter={handleMouseEnter2} onMouseLeave={handleMouseLeave2}>Admin Decide</Link>];
   const settings = ['Profile', <Link to='/ProfileManage'>Account</Link>, 'Dashboard', <Link to='/logout'>Log out</Link>];*/
 
-  const menu = [{name:"FAQ", url:"/faq"}];
+  const menu = [
+    { name: "FAQ", url: "/faq" },
+    { name: "Advanced search", url: "/search" }];
+    
   const mobilemenu = [
-    {name:"Home", url:"/"},
-    {name:"FAQ", url:"/faq"}];
+    { name: "Home", url: "/" },
+    { name: "FAQ", url: "/faq" },
+    { name: "Advanced search", url: "/search" }];
 
-  const settings = [{name:"Login", url:"/login"},{name:"Register", url:"/register"}];
-  
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
-  
-    const handleOpenNavMenu = (event) => {
-      setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event) => {
-      setAnchorElUser(event.currentTarget);
-    };
-  
-    const handleCloseNavMenu = () => {
-      setAnchorElNav(null);
-    };
-  
-    const handleCloseUserMenu = () => {
-      setAnchorElUser(null);
-    };
-  
-    let navigate = useNavigate();
+  const settings = [{ name: "Login", url: "/login" }, { name: "Register", url: "/register" }];
 
-    const Logout = async () => {
-        try {
-            await axios.delete('http://localhost:5000/logout');
-            navigate("/");
-        } catch (error) {
-            console.log("Looking for something? Might find it if you register/log in! ;)");
-        }
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
+  let navigate = useNavigate();
+
+  const Logout = async () => {
+    try {
+      await axios.delete('http://localhost:5000/logout');
+      navigate("/");
+    } catch (error) {
+      console.log("Looking for something? Might find it if you register/log in! ;)");
     }
+  }
 
   return (
-    <AppBar position="static" style={{background:'#222831', boxShadow:"none" }}>
-    <Container maxWidth="xl">
-      <Toolbar disableGutters>
-        
-        <Typography
-          variant="h6"
-          noWrap
-          component="a"
-          sx={{
-            mr: 2,
-            display: { xs: 'none', md: 'flex' },
-            fontFamily: 'monospace',
-            fontWeight: 700,
-            letterSpacing: '.3rem',
-            color: '#00ADB5',
-            textDecoration: 'none',
-            ":hover": {color: "white"}
-          }}
-          onClick={() => navigate('/')}
-        >
-          CRAFTTIPS
-        </Typography>
+    <AppBar position="static" style={{ background: '#222831', boxShadow: "none" }}>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
 
-        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none'} }}>
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleOpenNavMenu}
-            color="inherit"
-            
-          >
-            <MenuIcon />
-          </IconButton>
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorElNav}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            open={Boolean(anchorElNav)}
-            onClose={handleCloseNavMenu}
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
             sx={{
-              display: { xs: 'block', md: 'none' },
-              color: 'red',
-              
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: '#00ADB5',
+              textDecoration: 'none',
+              ":hover": { color: "white" }
             }}
+            onClick={() => navigate('/')}
           >
-            {mobilemenu.map((page, index) => (
-              <Link to={page.url} key={index}>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">{page.name}</Typography>
-              </MenuItem>
-              </Link>
-            ))}
-          </Menu>
-        </Box>
-        <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-       
-        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          {menu.map((page, index) => (
-            <Button
-              key={index}
-              onClick={handleCloseNavMenu}
-              LinkComponent={Link} to={page.url}
-              sx={{ my: 2, color: '#00ADB5', display: 'block' ,":hover": {color: "white"}}}
+            CRAFTTIPS
+          </Typography>
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+
             >
-              {page.name}
-            </Button>
-          ))}
-        </Box>
-        <Box sx={{ flexGrow: 0, marginRight:"20px" }}>
-        <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-        </Box>
-        <Box sx={{ flexGrow: 0 }}>
-          <Tooltip title="Open settings">
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-            <Avatar src="/broken-image.jpg" />
+              <MenuIcon />
             </IconButton>
-          </Tooltip>
-          <Menu
-            sx={{ mt: '45px' }}
-            id="menu-appbar"
-            anchorEl={anchorElUser}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            open={Boolean(anchorElUser)}
-            onClose={handleCloseUserMenu}
-            
-          >
-            {settings.map((setting, index) => (
-              <Link key={index} to={setting.url}>
-              <MenuItem  onClick={handleCloseUserMenu}>
-              <Typography textAlign="center">{setting.name}</Typography>
-              
-              </MenuItem>
-              </Link>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+                color: 'red',
+
+              }}
+            >
+              {mobilemenu.map((page, index) => (
+                <Link to={page.url} key={index}>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page.name}</Typography>
+                  </MenuItem>
+                </Link>
+              ))}
+            </Menu>
+          </Box>
+          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {menu.map((page, index) => (
+              <Button
+                key={index}
+                onClick={handleCloseNavMenu}
+                LinkComponent={Link} to={page.url}
+                sx={{ my: 2, color: '#00ADB5', display: 'block', ":hover": { color: "white" } }}
+              >
+                {page.name}
+              </Button>
             ))}
-          </Menu>
-        </Box>
-      </Toolbar>
-    </Container>
-  </AppBar>
-);
+          </Box>
+          <Box sx={{ flexGrow: 0, marginRight: "20px" }}>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+                onKeyPress={(e) => { if (e.key === "Enter") navigate(`/search/${e.target.value}`) }}
+              />
+            </Search>
+          </Box>
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar src="/broken-image.jpg" />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+
+            >
+              {settings.map((setting, index) => (
+                <Link key={index} to={setting.url}>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting.name}</Typography>
+
+                  </MenuItem>
+                </Link>
+              ))}
+            </Menu>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
 }
 
 export default LandingNavbar;

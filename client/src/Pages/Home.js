@@ -8,27 +8,17 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { AppBar, Avatar, ButtonGroup, CardActionArea, FormControlLabel, FormGroup, Grid, IconButton, Menu } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import {  Avatar, CardActionArea, Grid, } from '@mui/material';
+import { Link } from 'react-router-dom';
 import "./Background.css";
 import { format, parseISO } from 'date-fns'
-import { styled } from '@mui/material/styles';
-import Switch from '@mui/material/Switch';
-import { GiCrafting } from "react-icons/gi";
-import { MdRecycling} from "react-icons/md";
-import { AiOutlineSearch } from "react-icons/ai";
-import { BiHomeAlt } from "react-icons/bi";
-import { CgFeed } from "react-icons/cg";
+
 
 export const Home = () => {
   
   
   const [name, setName] = useState('');
-  const [creatorID, setCreatorID] = useState('');
-  const [userID, setUserID] = useState('');
   const [ispost, setpost] = useState([]);
-  const [token, setToken] = useState('');
-  const [expire, setExpire] = useState('');
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -42,38 +32,21 @@ export const Home = () => {
             const response = await axios.get('http://localhost:5000/token');
             const decoded = jwt_decode(response.data.accessToken);
             setName(decoded.name);
-            setCreatorID(decoded.creator_id);
         } catch (error) {
             if (error.response) {
             }
         }
       }
-      const axiosJWT = axios.create();
-
-      axiosJWT.interceptors.request.use(async (config) => {
-          const currentDate = new Date();
-          if (expire * 1000 < currentDate.getTime()) {
-              const response = await axios.get('http://localhost:5000/token');
-              config.headers.Authorization = `Bearer ${response.data.accessToken}`;
-              setToken(response.data.accessToken);
-              const decoded = jwt_decode(response.data.accessToken);
-              setName(decoded.name);
-              setExpire(decoded.exp);
-              setUserID(decoded.id);
-          }
-          return config;
-      }, (error) => {
-          return Promise.reject(error);
-      });
 
       const getUsers = async () => {
-        const response = await axiosJWT.get('http://localhost:5000/users', {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
-        setUsers(response.data);
-    }
+        try {
+        axios.get('http://localhost:5000/tokenlessUsers')
+        .then(res => {
+          setUsers(res.data);
+        })
+        } catch (error) { throw error;}
+      }
+    
 
 
       const viewPost = async() =>{

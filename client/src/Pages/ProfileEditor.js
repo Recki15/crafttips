@@ -89,7 +89,7 @@ export default function ProfileEditor() {
 
       const searchInput = (e) => {
         for (let index = 0; index < ispost.length; index++) {
-          if (ispost[index].title.replace(/\s+/g, '').toLowerCase().indexOf(e.replace(/\s+/g, '').toLowerCase()) === 0) {
+          if (ispost[index].title.replace(/\s+/g, '').toLowerCase().includes(e.replace(/\s+/g, '').toLowerCase())) {
             document.getElementById(ispost[index].id).style.height="auto"
             document.getElementById(ispost[index].id).style.width="auto"
           } else {

@@ -33,7 +33,8 @@ function App() {
                 <Route path='/logout' element={<Logout />} />
                 <Route path="/contactus" element={<><LoggedInNavbar /><ContactUs /></>} />
                 <Route path="/add" element={<><LoggedInNavbar /> <Add /></>} />
-                <Route path="/Search" element={<><LoggedInNavbar /> <SearchPage /></>} />
+                <Route path="/search" element={<><SearchPage /></>} />
+                <Route path="/search/:text" element={<><SearchPage /></>} />
                 <Route path="/Faq" element={<><LoggedInNavbar /> <Faq /></>} />
                 <Route path="/admin" element={<><LoggedInNavbar /> <Admin /></>} />
                 <Route path='/login' element={<><LandingNavBar /> <Login /></>} />
@@ -43,7 +44,7 @@ function App() {
                 <Route path='/admin/admindecide/posts/:ids' element={<><LoggedInNavbar /> <AdminPostChecker /> </>} />
                 <Route path='/admin/admindecide' element={<><LoggedInNavbar /> <AdminDecide /> </>} />
                 <Route path='/profileManage/edit' element={<><LoggedInNavbar /> <ProfileEditor /> </>} />
-                <Route path='/profile/:ids' element={<><LoggedInNavbar /> <Profile /> </>} />
+                <Route path='/profile/:ids' element={<><Profile /> </>} />
             </Routes>
         </Router>
 
