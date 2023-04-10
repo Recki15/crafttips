@@ -194,7 +194,7 @@ const SearchPage = () => {
                     <CardActionArea component={Link} to={'/profile/' + item.creator_id}>
                       {Profile(item.creator_id)}
                     </CardActionArea>
-                    <CardActionArea component={Link} to={'posts/' + item.id}>
+                    <CardActionArea component={Link} to={'/posts/' + item.id}>
                       <CardMedia
                         component="img"
                         height="140"

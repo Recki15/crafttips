@@ -2,7 +2,7 @@ import express from "express";
 import { getUsers, Register, Login, Logout, getUser } from "../controllers/Users.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
 import { refreshToken } from "../controllers/RefreshToken.js";
-import { activatePost, addNewPost, deletePost, editPostById, findPostById, findPostByUserId, findPostsByUserId, get10ActivePosts, getActivePosts, getInactivePosts, getPosts, updatePost } from "../controllers/Posts.js";
+import { activatePost, addNewPost, deactivatePost, deletePost, editPostById, findPostById, findPostByUserId, findPostsByUserId, get10ActivePosts, getActivePosts, getInactivePosts, getPosts, updatePost } from "../controllers/Posts.js";
 import { addRating, getRatings, updateRating } from "../controllers/Ratings.js";
  
 const router = express.Router();
@@ -28,6 +28,7 @@ router.get('/findPostByUserId/:id',findPostByUserId);
 router.get('/findPostsByUserId/:id',findPostsByUserId);
 router.delete('/deletePost/:id', deletePost);
 router.put('/activatePost/:id', activatePost);
+router.put('/deactivatePost/:id', deactivatePost);
 router.put('/updatePost/:id', updatePost);
 
 //Rating-router

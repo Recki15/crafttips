@@ -203,12 +203,11 @@ var handleChange = (selectedOption) => {
                      onChange={handleChange}
                      isSearchable={true}
                      styles={customStyles}
-                    
                   />
                  
                 </div>
                 
-                <h1></h1>
+                <h1 style={{color:'red'}}>Warning! You should re-select the tools you need for this tip!</h1>
               </div>
              
               <br />

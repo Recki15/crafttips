@@ -80,7 +80,7 @@ export default function ProfileManage() {
               <div className="p-4 text-black" style={{ backgroundColor: '#f8f9fa' }}>
                 <div>
                   <div style={{width: "250px", float: "left"}}>
-                    <Link to="/ProfileManage/edit"><button className='editbutton'>Edit Profile</button></Link>
+                    <Link to="/ProfileManage/edit"><button className='editbutton'>Edit Profile/Posts</button></Link>
                   </div>
                   <div style={{width: "50px", float: "right"}}>
                     <MDBCardText className="mb-1 h5">{ispost.length}</MDBCardText>
@@ -99,7 +99,6 @@ export default function ProfileManage() {
                 </div>
                 <div className="d-flex justify-content-between align-items-center mb-4">
                   <MDBCardText className="lead fw-normal mb-0 mainTexts">Recent posts</MDBCardText>
-                  <MDBCardText className="mb-0"><a href="#!" className="text-muted">Show all</a></MDBCardText>
                 </div>
                 <MDBRow>
                   <MDBCol className="mb-2">

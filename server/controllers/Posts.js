@@ -108,7 +108,8 @@ export const findPostByUserId = async(req, res) => {
         const post = await Posts.findAll(
             {
                 attributes: ['id', 'title', 'cover_image', 'short_desc', 'updatedAt', 'tools'],
-                where: {creator_id: req.params.id, active: 1}
+                where: {creator_id: req.params.id, active: 1},
+                limit:4
             },
         )
         res.json(post);
@@ -151,6 +152,19 @@ export const activatePost = async(req, res) => {
     try {
         const post = await Posts.update(
             {active: 1},
+            {where: {id: req.params.id}}
+        )
+        res.json(post);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({ msg: "Error!" });
+    }
+}
+
+export const deactivatePost = async(req, res) => {
+    try {
+        const post = await Posts.update(
+            {active: 0},
             {where: {id: req.params.id}}
         )
         res.json(post);

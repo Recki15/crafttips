@@ -177,7 +177,6 @@ var handleChange = (selectedOption) => {
                      onChange={handleChange}
                      isSearchable={true}
                      styles={customStyles}
-                    
                   />
                  
                 </div>

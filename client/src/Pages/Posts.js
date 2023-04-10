@@ -30,6 +30,7 @@ function getLabelText(value) {
 export const Posts = () => {
   const [name, setName] = useState('');
   const [userId, setUserId] = useState('');
+  const [avgRating, SetAvgRating] = useState('');
   const [alreadyRated, setAlreadyRated] = useState(false);
   const { ids } = useParams();
   const [ispost, setpost] = useState([]);
@@ -73,11 +74,18 @@ export const Posts = () => {
       await axios.get(`http://localhost:5000/getRatings/${ids}`)
         .then(res => {
           setRatings(res.data);
+          let avg = 0;
             for (let i = 0; i < res.data.length; i++) {
               if (e === res.data[i].userId) {
                 setAlreadyRated(true)
                 setRatingValue(res.data[i].rating)
-              }}
+              }
+            avg = avg + res.data[i].rating;
+            }
+            if (res.data.length === 0) {
+              SetAvgRating("--not yet rated--");
+            } else{SetAvgRating(avg/res.data.length + " /5");}
+            
           }
           )
     } catch (error) { throw error; }
@@ -95,6 +103,7 @@ export const Posts = () => {
     if (name.length > 0) {
         if (alreadyRated) {
           return <>
+          <h1 style={{ color: '#EEE' }}>Current rating: {avgRating}</h1>
             <h3 style={{ color: '#EEE' }}>Do you want to change your rating?</h3>
             <Box
               sx={{
@@ -125,6 +134,7 @@ export const Posts = () => {
 
         }
       return <>
+      <h1 style={{ color: '#EEE' }}>Current rating: {avgRating}</h1>
         <h3 style={{ color: '#EEE' }}>How usefull was this CraftTip for you?</h3>
         <Box
           sx={{
@@ -153,7 +163,11 @@ export const Posts = () => {
         <Button type='submit' onClick={addRating} id='addRating'>Submit rating</Button>
       </>
     } else {
-      return <h2 style={{ color: '#EEE' }}>You should register to rate this CraftTip! ;)</h2>
+      return 
+      <>
+      <h1 style={{ color: '#EEE' }}>Current rating: {avgRating}</h1>
+      <h2 style={{ color: '#EEE' }}>You should register to rate this CraftTip! ;)</h2>
+      </>  
     }
   }
 

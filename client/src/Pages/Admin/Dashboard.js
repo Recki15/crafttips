@@ -62,6 +62,12 @@ export const Dashboard = () => {
         setUsers(response.data);
     }
 
+    const roleDecider = (e) => {
+        if(e === 0){return "User"}
+        if(e === 1){return "Admin"}
+        if(e === 2){return "Super Admin"}
+      }
+
     return (
         <>
         <div className='gradient-custom-3'>
@@ -74,13 +80,15 @@ export const Dashboard = () => {
         <Grid item xs={10} className="gridL">
         <div className='decidediv'>
         <div className="container mt-5">
-            <h1>Welcome Back: {name}</h1>
+            <h1 style={{color:'#EEE'}}>Welcome Back: {name}</h1>
             <table className="table is-striped is-fullwidth">
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Role</th>
+                        <th>Go-to button</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -89,6 +97,10 @@ export const Dashboard = () => {
                             <td>{index + 1}</td>
                             <td>{user.name}</td>
                             <td>{user.email}</td>
+                            <td>{roleDecider(user.permission_level)}</td>
+                            <td>
+                            <button onClick={() => navigate(`/profile/${user.id}`)} className="btn btn-success">View user</button>
+                            </td>
                         </tr>
                     ))}
 

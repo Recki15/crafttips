@@ -18,7 +18,7 @@ import { Posts } from "./Pages/Posts";
 import { GeneralPageNotFound } from "./Pages/GeneralPageNotFound";
 import { Edit } from "./Pages/Edit";
 import SearchPage from "./Pages/Search";
-import { Faq } from "./Pages/Faq";
+import { Faqq } from "./Pages/Faq";
 import { Feed } from "./Pages/Feed";
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
                 <Route path="/add" element={<><LoggedInNavbar /> <Add /></>} />
                 <Route path="/search" element={<><SearchPage /></>} />
                 <Route path="/search/:text" element={<><SearchPage /></>} />
-                <Route path="/Faq" element={<><LoggedInNavbar /> <Faq /></>} />
+                <Route path="/Faq" element={<> <Faqq /></>} />
                 <Route path="/admin" element={<><LoggedInNavbar /> <Admin /></>} />
                 <Route path='/login' element={<><LandingNavBar /> <Login /></>} />
                 <Route path='/register' element={<><LandingNavBar /> <Register /></>} />

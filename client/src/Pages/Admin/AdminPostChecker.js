@@ -90,7 +90,7 @@ export const AdminPostChecker = () => {
                     </div>
                 </Grid>
                 <Grid item xs={2}>
-                    <h1 style={{ color: 'aqua', border: '1px solid green' }}>Decide what to do with the post! Should it be deleted or published?</h1>
+                    <h1 style={{ color: 'aqua' }}>Decide what to do with the post! Should it be deleted or published?</h1>
                     <br />
                     <div>
                         <button onClick={() => doActivateAction("Activate post", "Are you sure about activating this post?", Number(ids))} className="btn btn-success">Make post visible</button>
