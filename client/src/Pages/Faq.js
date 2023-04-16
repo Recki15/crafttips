@@ -32,6 +32,13 @@ const data = {
         title: "What happens if I hurt myself following one of the Crafttip I found on the website?",
         content: 'We take no responsibility about any injury you cause for yourself. In the end, its just a guide for your creativity, and you are responsible for your own actions.',
     },
+    {
+      title: "How to add a new post?",
+      content: `First, login/register to the website. After that, you just need to click on the 'Add' button, 
+      and it will navigate you to the right page. There fill out everything and click on the 'submit' button on the bottom of the page.
+      The post should appaer on your profile, if you click on the 'Edit profile' button, where you will access all of your added posts.
+      After some time an admin will review your post, and if he finds it OK he will activate it for the public view.`,
+    }
   ],
 };
 
@@ -40,7 +47,7 @@ const styles = {
   titleTextColor: "rgb(0, 173, 181)",
   rowTitleColor: "rgb(0, 173, 181)",
   rowContentColor: 'rgb(238, 238, 238)',
-  arrowColor: "red",
+  arrowColor: "aqua",
 };
 
 const config = {

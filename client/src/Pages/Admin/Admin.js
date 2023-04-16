@@ -155,7 +155,7 @@ return(
         <div className='decidediv'>
         <h1 style={{color:'#EEE'}}>Currently active posts </h1><br />
         <FormGroup className="mb-3 d-flex align-items-center">
-            <input type="search" class="form-control" id="" onChange={(e) => searchInput(e.target.value)} placeholder="Search" required="" />
+            <input type="search" className="form-control" id="" onChange={(e) => searchInput(e.target.value)} placeholder="Search" required="" />
         </FormGroup>
         <Grid container rowSpacing={-5} columnSpacing={{ xs: -1, sm: -2, md: -1 }}>
           {ispost.map((item,index) => ( 

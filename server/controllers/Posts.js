@@ -4,7 +4,8 @@ import Posts from "../models/PostModel.js";
 export const getPosts = async (req, res) => {
     try {
         const posts = await Posts.findAll({
-            attributes: ['id', 'title', 'cover_image', 'short_desc', 'creator_id']
+            attributes: ['id', 'title', 'cover_image', 'short_desc', 'creator_id'],
+            order: [['updatedAt', 'DESC']]
         });
         res.json(posts);
     } catch (error) {
@@ -29,7 +30,8 @@ export const get10ActivePosts = async (req, res) => {
         const posts = await Posts.findAll({
             attributes: ['id', 'title', 'cover_image', 'short_desc', 'creator_id','updatedAt', 'tools'],
             where: {active : 1},
-            limit: 10
+            limit: 10,
+            order: [['updatedAt', 'DESC']]
         });
         res.json(posts);
     } catch (error) {

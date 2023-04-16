@@ -90,10 +90,11 @@ const refreshToken = async () => {
 
 var handleChange = (selectedOption) => {
     setSelectedOption(selectedOption.value);
+    let szoveg = "";
     selectedOption.forEach(e => {
-      console.log(e.value)
-      setSendSelectedOption(sendSelectedOption + e.value + ";");
+      szoveg = szoveg + e.value + ";"
       });
+      setSendSelectedOption(szoveg);
       console.log(sendSelectedOption)
   };
 
@@ -129,7 +130,7 @@ var handleChange = (selectedOption) => {
               <div className="form-group col-md-12">
                 <label className="font-weight-bold"> Title <span className="required"> * </span> </label>
                 <p>Please write a title for your CraftTip!</p>
-                <input type="text" name="title" value={userInfo.title} onChange={onChangeValue}  className="form-content" placeholder="Title" required />
+                <input type="text" name="title" value={userInfo.title} onChange={onChangeValue}  className="form-content" placeholder="Title" required maxLength={50}/>
               </div>
               <div className="clearfix"></div>
               <div>

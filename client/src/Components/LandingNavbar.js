@@ -90,12 +90,14 @@ function LandingNavbar() {
 
   const menu = [
     { name: "FAQ", url: "/faq" },
-    { name: "Advanced search", url: "/search" }];
+    { name: "Advanced search", url: "/search" },
+    { name: "All posts", url: "/feed" }];
     
   const mobilemenu = [
     { name: "Home", url: "/" },
     { name: "FAQ", url: "/faq" },
-    { name: "Advanced search", url: "/search" }];
+    { name: "Advanced search", url: "/search" },
+    { name: "All posts", url: "/feed" }];
 
   const settings = [{ name: "Login", url: "/login" }, { name: "Register", url: "/register" }];
 

@@ -79,14 +79,16 @@ function LoggedInNavbar() {
     {name:"Add", url:"/add"},
     {name:"Contact Us", url:"/ContactUs"},
     {name:"Admin", url:"/admin"},
-    {name:"Advanced search", url:"/search"}];
+    {name:"Advanced search", url:"/search"},
+    {name: "All posts", url: "/feed" }];
 
     const menu2 = [
       {name:"FAQ", url:"/faq"},
       {name:"Add", url:"/add"},
       {name:"Contact Us", url:"/ContactUs"},
       {name:"Admin", url:"/admin"},
-      {name:"Advanced search", url:"/search"}];
+      {name:"Advanced search", url:"/search"},
+      {name: "All posts", url: "/feed" }];
 
   const settings = [{name:"Profile", url:"/ProfileManage"},{name:"Logout", url:"/logout"}];
   
@@ -144,7 +146,7 @@ function LoggedInNavbar() {
     
 
   return (
-    <AppBar className='appbar' position="on-top" style={{background:'#222831', boxShadow:"none"}}>
+    <AppBar className='appbar' position="sticky" style={{background:'#222831', boxShadow:"none"}}>
     <Container maxWidth="xl">
       <Toolbar disableGutters>
         

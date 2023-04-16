@@ -34,7 +34,6 @@ function App() {
                 <Route path="/contactus" element={<><LoggedInNavbar /><ContactUs /></>} />
                 <Route path="/add" element={<><LoggedInNavbar /> <Add /></>} />
                 <Route path="/search" element={<><SearchPage /></>} />
-                <Route path="/search/:text" element={<><SearchPage /></>} />
                 <Route path="/Faq" element={<> <Faqq /></>} />
                 <Route path="/admin" element={<><LoggedInNavbar /> <Admin /></>} />
                 <Route path='/login' element={<><LandingNavBar /> <Login /></>} />
