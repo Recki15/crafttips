@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import jwt_decode from "jwt-decode";
 import { Avatar, CardActionArea, Grid } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import "./Background.css";
@@ -9,16 +11,32 @@ import { BiHomeAlt } from "react-icons/bi";
 import { CgFeed } from "react-icons/cg";
 
 
-export const Welcome = () => {
+export const WelcomeLoggedIn = () => {
+    const [name, setName] = useState('');
+
+    useEffect(() => {
+        refreshToken();
+        }, []);
+
+    const refreshToken = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/token');
+                const decoded = jwt_decode(response.data.accessToken);
+                setName(decoded.name);
+            } catch (error) {
+                if (error.response) {
+                }
+            }
+          }
+
   return (
     <>
         <div className='welcomehead'>
             <br/>
             <br/>
             <br/>
-              <h2 className='welcomeh2'>WELCOME TO</h2>
-              <h1 className='welcomeh1'>CRAFTTIPS</h1>
-              <Link to='/register'><button className='welcomebutton' >Register now!</button></Link>
+              <h2 className='welcomeh2'>WELCOME BACK,</h2>
+              <h1 className='welcomeh1'>{name}!</h1>
               <p className='welcomep'></p>
           </div>
           <div className='ttddiv'>
@@ -50,7 +68,7 @@ export const Welcome = () => {
                   <p>Reach the feed of the communtity</p>
                 </Grid>
                 <Grid item xs={2}className='welcomegrid3'>
-                  <p></p>
+                  
                 </Grid>
               </Grid>
             </Grid>

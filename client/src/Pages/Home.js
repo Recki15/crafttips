@@ -3,6 +3,7 @@ import axios from 'axios';
 import jwt_decode from "jwt-decode";
 import LandingNavBar from '../Components/LandingNavbar';
 import {Welcome} from './Welcome';
+import {WelcomeLoggedIn} from './WelcomeLoggedIn';
 import LoggedInNavbar from '../Components/LoggedInNavbar';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -68,7 +69,7 @@ export const Home = () => {
 
       const welcomeDecider = () =>{
         if(name.length > 0) {
-          return 
+          return <WelcomeLoggedIn/>
         }else{
           return <Welcome/>}
       }
