@@ -40,27 +40,27 @@ export const WelcomeLoggedIn = () => {
             </Grid>
             <Grid item xs={8} alignContent={'center'}>
               <Grid container  className='welcomegrid2' spacing={8} alignContent={'center'}>
-                <Grid item xs={2} sm={2} className='welcomegrid3'>
+                <Grid item xs={4} sm={2} className='welcomegrid3'>
                   <GiCrafting className='weicon'/>
                   <p>Cure your boredom and craft something!</p>
                 </Grid>
-                <Grid item xs={2} sm={2} className='welcomegrid3'>
+                <Grid item xs={4} sm={2} className='welcomegrid3'>
                   <AiOutlineSearch className='weicon'/>
                   <p>Search and find amazing tips!</p>
                 </Grid>
-                <Grid item xs={2} sm={2} className='welcomegrid3'>
+                <Grid item xs={4} sm={2} className='welcomegrid3'>
                   <MdRecycling className='weicon'/>
                   <p>Recycle your trash and save our world!</p>
                 </Grid>
-                <Grid item xs={2} sm={2} className='welcomegrid3'>
+                <Grid item xs={4} sm={2} className='welcomegrid3'>
                   <BiHomeAlt className='weicon'/>
                   <p>Decorate your home by hand-made decor!</p>
                 </Grid>
-                <Grid item xs={2} sm={2} className='welcomegrid3'>
+                <Grid item xs={4} sm={2} className='welcomegrid3'>
                   <CgFeed className='weicon'/>
                   <p>New posts uploaded every day!</p>
                 </Grid>
-                <Grid item xs={2} sm={2} className='welcomegrid3'>
+                <Grid item xs={4} sm={2} className='welcomegrid3'>
                   <AiOutlineStar className='weicon'/>
                   <p>Tell everyone your opinin on crafts!</p>
                 </Grid>
