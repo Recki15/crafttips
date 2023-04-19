@@ -96,7 +96,6 @@ export const Feed = () => {
       <Grid container spacing={1}>
         <Grid item xs={1} />
         <Grid item xs={10} className="gridL">
-          <button>ye</button>
           <div className='decidediv'>
             <Grid container rowSpacing={-5} columnSpacing={{ xs: -1, sm: -2, md: -1 }} >
               {currentPosts.map((item, index) => (

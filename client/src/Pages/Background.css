@@ -253,3 +253,8 @@ font-size: 20px;
 .search-btn:hover {
   transform: translateY(-1px);
 }
+
+.select{
+  text-align: center;
+  margin: 10%;
+}

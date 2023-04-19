@@ -9,6 +9,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import {  Avatar,  CardActionArea,  FormGroup, Grid } from '@mui/material';
+import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import "./Background.css";
 import { format, parseISO } from 'date-fns'
@@ -16,8 +17,9 @@ import LandingNavbar from '../Components/LandingNavbar';
 
 const SearchPage = () => {
   const [searchText, setSearchText] = useState('');
-  const tools = ['Hammer', 'Axe', 'Crowbar', 'Drill', 'Spade']
-  const [selectedTools, setSelectedTools] = useState([]);
+  const [selectedTools, setSelectedTools] = useState('');
+  const [selectedOption, setSelectedOption] = useState("");
+  let [sendSelectedOption, setSendSelectedOption] = useState("");;
 
   const [ispost, setpost] = useState([]);
   const [name, setName] = useState('');
@@ -44,10 +46,11 @@ const SearchPage = () => {
   //A kategória keresést még bugfixelni kell.
   const searchInput = () => {
     for (let index = 0; index < ispost.length; index++) {
+      
       if (ispost[index].title.replace(/\s+/g, '').toLowerCase().includes(searchText.replace(/\s+/g, '').toLowerCase())) {
         if (selectedTools.length > 0) {
           for (let i = 0; i < selectedTools.length; i++) {
-            if (ispost[index].tools.replace(/\s+/g, '').toLowerCase().includes(selectedTools[i].replace(/\s+/g, '').toLowerCase())) {
+            if (ispost[index].tools.replace(/\s+/g, '').toLowerCase().includes(selectedTools.replace(/\s+/g, '').toLowerCase())) {
               document.getElementById(ispost[index].id).style.display = "initial"
             }else{
               document.getElementById(ispost[index].id).style.display = 'none'
@@ -98,6 +101,16 @@ const SearchPage = () => {
     }
   }
 
+  var handleChange = (selectedOption) => {
+    let szoveg = "";
+    selectedOption.forEach(e => {
+      szoveg = szoveg + e.value + ";"
+      });
+      setSendSelectedOption(szoveg);
+      setSelectedTools(szoveg);
+      
+  };
+
   const navbarDecider = () => {
     if (name.length > 0) {
       return <LoggedInNavbar />
@@ -106,18 +119,35 @@ const SearchPage = () => {
     }
   }
 
-  const setSelectedToolsFunction = (name, id) => {
-    if (document.getElementById(id).className.match('filterbtn-notSelected')) {
-      setSelectedTools(current => [...current, name])
-      document.getElementById(id).className = 'filterbtn-Selected'
-    } else {
-      var array = [...selectedTools];
-      const index = array.indexOf(name);
-      document.getElementById(id).className = 'filterbtn-notSelected'
-      array.splice(index, 1)
-      setSelectedTools(array)
-    }
-  }
+
+
+  const customStyles = {
+    option: (defaultStyles, state) => ({
+      ...defaultStyles,
+      color: state.isSelected ? "#222831" : "#00ADB5",
+      backgroundColor: state.isSelected ? "#00ADB5" : "#222831",
+    }),
+
+    control: (defaultStyles) => ({
+      ...defaultStyles,
+      backgroundColor: "#222831",
+      padding: "10px",
+      border: "none",
+      boxShadow: "none",
+      width: "80%"
+    }),
+    singleValue: (defaultStyles) => ({ ...defaultStyles, color: "#222831" }),
+  };
+
+  const optionList = [
+    { value: "hammer", label: "hammer" },
+    { value: "axe", label: "axe" },
+    { value: "crowbar", label: "crowbar" },
+    { value: "drill", label: "drill" },
+    { value: "spade", label: "spade" }
+  ];
+
+
   return (
     <div>
       {navbarDecider()}
@@ -127,16 +157,24 @@ const SearchPage = () => {
       <FormGroup className="mb-3 d-flex align-items-center">
         <label>Filter by:</label>
         <div>
-          {tools.map((tool, index) => {
-            return <button className='filterbtn-notSelected' value={tool} key={index} onClick={(e) => setSelectedToolsFunction(e.target.value, e.target.id)} id={index+10000}>{tool}</button>
-          })}
+            <div className="center">
+                  <Select
+                     isMulti
+                     options={optionList}
+                     placeholder="Select the tools needed!"
+                     onChange={handleChange}
+                     isSearchable={true}
+                     styles={customStyles}
+                  />
+                </div>
         </div>
       </FormGroup>
       <FormGroup className="mb-3 d-flex align-items-center">
-        <label>Filter by:</label>
+
         <div>
           <button className='search-btn' onClick={searchInput}>Search</button>
         </div>
+        
       </FormGroup>
       <hr />
       <Grid container spacing={1}>

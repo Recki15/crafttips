@@ -36,7 +36,7 @@ export const WelcomeLoggedIn = () => {
             <br/>
             <br/>
               <h2 className='welcomeh2'>WELCOME BACK,</h2>
-              <h1 className='welcomeh1'>{name}!</h1>
+              <h1 className='welcomeh1'>{name.toUpperCase()}!</h1>
               <p className='welcomep'></p>
           </div>
           <div className='ttddiv'>

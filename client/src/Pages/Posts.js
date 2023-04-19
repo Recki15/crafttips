@@ -204,7 +204,7 @@ export const Posts = () => {
       {navbarDecider()}
       <Grid container>
         <Grid item xs={2}>
-          <h1 style={{ color: 'aqua', border: '1px solid green' }}>xs2</h1>
+          
         </Grid>
         <Grid item xs={8}>
           <div id='postWrap'>
@@ -218,12 +218,13 @@ export const Posts = () => {
             <div className='postLongdesc'>
               <div dangerouslySetInnerHTML={{ __html: ispost.long_desc }} id="post" />
             </div>
+            {ratingDecider()}
           </div>
 
-          {ratingDecider()}
+          
         </Grid>
         <Grid item xs={2}>
-          <h1 style={{ color: 'aqua', border: '1px solid green' }}>xs2</h1>
+          
         </Grid>
       </Grid>
     </>
