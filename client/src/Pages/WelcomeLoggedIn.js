@@ -8,8 +8,8 @@ import { GiCrafting } from "react-icons/gi";
 import { MdRecycling} from "react-icons/md";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BiHomeAlt } from "react-icons/bi";
-import { CgFeed } from "react-icons/cg";
-
+import { CgEnter, CgFeed } from "react-icons/cg";
+import { AiOutlineStar } from "react-icons/ai";
 
 export const WelcomeLoggedIn = () => {
     const [name, setName] = useState('');
@@ -31,22 +31,15 @@ export const WelcomeLoggedIn = () => {
 
   return (
     <>
-        <div className='welcomehead'>
-            <br/>
-            <br/>
-            <br/>
-              <h2 className='welcomeh2'>WELCOME BACK,</h2>
-              <h1 className='welcomeh1'>{name.toUpperCase()}!</h1>
-              <p className='welcomep'></p>
-          </div>
-          <div className='ttddiv'>
-          <p className='welcomep2'>Start crafting today!</p>
+        <div className='welcome'>
+              <h2 className='welcometext'>WELCOME BACK,</h2>
+              <h1 className='welcometext'>{name.toUpperCase()}!</h1>
           <Grid container className='welcomegrid'>
             <Grid item xs={2} >
               
             </Grid>
-            <Grid item xs={8}>
-              <Grid container  className='welcomegrid2' spacing={3}>
+            <Grid item xs={8} alignContent={'center'}>
+              <Grid container  className='welcomegrid2' spacing={8} alignContent={'center'}>
                 <Grid item xs={2} sm={2} className='welcomegrid3'>
                   <GiCrafting className='weicon'/>
                   <p>Cure your boredom and craft something!</p>
@@ -61,18 +54,20 @@ export const WelcomeLoggedIn = () => {
                 </Grid>
                 <Grid item xs={2} sm={2} className='welcomegrid3'>
                   <BiHomeAlt className='weicon'/>
-                  <p>Decorate your home by hand-made decor</p>
+                  <p>Decorate your home by hand-made decor!</p>
                 </Grid>
                 <Grid item xs={2} sm={2} className='welcomegrid3'>
                   <CgFeed className='weicon'/>
-                  <p>Reach the feed of the communtity</p>
+                  <p>New posts uploaded every day!</p>
                 </Grid>
-                <Grid item xs={2}className='welcomegrid3'>
-                  
+                <Grid item xs={2} sm={2} className='welcomegrid3'>
+                  <AiOutlineStar className='weicon'/>
+                  <p>Tell everyone your opinin on crafts!</p>
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={2} >
+              
             </Grid>
           </Grid>
           </div>

@@ -16,6 +16,27 @@
   }
 }
 
+.search {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #282c34;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -38,6 +59,19 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.registerButton{
+  border-radius: 15%;
+  outline-width: 1px;
+  outline-color: gray;
+  background-color: #222831;
+  color: #00ADB5;
+}
+
+.welcometext{
+  font-size: 60px;
+  color: white;
 }
 
 .post_list{

@@ -151,6 +151,8 @@ const SearchPage = () => {
   return (
     <div>
       {navbarDecider()}
+      <div className='search'>
+        <br></br>
         <FormGroup className="mb-3 d-flex align-items-center">
           <input type="search" className="form-control" id="" value={searchText} onChange={(e) => setSearchText(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') searchInput() }} placeholder="Search" required="" />
         </FormGroup>
@@ -177,6 +179,7 @@ const SearchPage = () => {
         
       </FormGroup>
       <hr />
+      </div>
       <Grid container spacing={1}>
         <Grid item xs={12} className="gridL">
           <div className='decidediv'>
