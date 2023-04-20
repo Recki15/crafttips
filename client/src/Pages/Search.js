@@ -8,7 +8,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import {  Avatar,  CardActionArea,  FormGroup, Grid } from '@mui/material';
+import { Avatar, CardActionArea, FormGroup, Grid } from '@mui/material';
 import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import "./Background.css";
@@ -45,16 +45,15 @@ const SearchPage = () => {
 
   //A kategória keresést még bugfixelni kell.
   const searchInput = () => {
+    const searchReq = selectedTools.slice(0, -1).replace(/\s+/g, '').toLowerCase().split(";");
     for (let index = 0; index < ispost.length; index++) {
-      
+
       if (ispost[index].title.replace(/\s+/g, '').toLowerCase().includes(searchText.replace(/\s+/g, '').toLowerCase())) {
         if (selectedTools.length > 0) {
-          for (let i = 0; i < selectedTools.length; i++) {
-            if (ispost[index].tools.replace(/\s+/g, '').toLowerCase().includes(selectedTools.replace(/\s+/g, '').toLowerCase())) {
-              document.getElementById(ispost[index].id).style.display = "initial"
-            }else{
-              document.getElementById(ispost[index].id).style.display = 'none'
-            }
+          if (searchReq.every(i => ispost[index].tools.replace(/\s+/g, '').toLowerCase().includes(i))) {
+            document.getElementById(ispost[index].id).style.display = "initial"
+          } else {
+            document.getElementById(ispost[index].id).style.display = 'none'
           }
         } else {
           document.getElementById(ispost[index].id).style.display = "initial"
@@ -105,10 +104,10 @@ const SearchPage = () => {
     let szoveg = "";
     selectedOption.forEach(e => {
       szoveg = szoveg + e.value + ";"
-      });
-      setSendSelectedOption(szoveg);
-      setSelectedTools(szoveg);
-      
+    });
+    setSendSelectedOption(szoveg);
+    setSelectedTools(szoveg);
+
   };
 
   const navbarDecider = () => {
@@ -151,35 +150,31 @@ const SearchPage = () => {
   return (
     <div>
       {navbarDecider()}
-      <div className='search'>
-        <br></br>
-        <FormGroup className="mb-3 d-flex align-items-center">
-          <input type="search" className="form-control" id="" value={searchText} onChange={(e) => setSearchText(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') searchInput() }} placeholder="Search" required="" />
-        </FormGroup>
-      <FormGroup className="mb-3 d-flex align-items-center">
-        <label>Filter by:</label>
-        <div>
-            <div className="center">
-                  <Select
-                     isMulti
-                     options={optionList}
-                     placeholder="Select the tools needed!"
-                     onChange={handleChange}
-                     isSearchable={true}
-                     styles={customStyles}
-                  />
-                </div>
-        </div>
-      </FormGroup>
-      <FormGroup className="mb-3 d-flex align-items-center">
-
-        <div>
-          <button className='search-btn' onClick={searchInput}>Search</button>
-        </div>
-        
-      </FormGroup>
-      <hr />
+      <div className='h-100 d-flex align-items-center justify-content-center'>
+        <br />
+        <input type="search" className="form-control" id="" value={searchText} onChange={(e) => setSearchText(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') searchInput() }} placeholder="Search" required="" style={{ width: '70%'}} />
       </div>
+      <br />
+      <div className='h-100 d-flex align-items-center justify-content-center'>
+        <label>Filter by:</label>
+      </div>
+
+          <div className="center">
+            <Select
+              isMulti
+              options={optionList}
+              placeholder="Select the tools needed!"
+              onChange={handleChange}
+              isSearchable={true}
+              styles={customStyles}
+            />
+
+      </div>
+      <div className='h-100 d-flex align-items-center justify-content-center'>
+        <button className='search-btn' onClick={searchInput}>Search</button>
+      </div>
+
+      <hr />
       <Grid container spacing={1}>
         <Grid item xs={12} className="gridL">
           <div className='decidediv'>
