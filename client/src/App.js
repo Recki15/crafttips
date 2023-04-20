@@ -31,7 +31,7 @@ function App() {
                 <Route path='/posts/:ids'  element={<><Posts /></>} />
                 <Route path='/editpost/:ids' element={<><LoggedInNavbar /> <Edit /></>} />
                 <Route path='/logout' element={<Logout />} />
-                <Route path="/contactus" element={<><LoggedInNavbar /><ContactUs /></>} />
+                <Route path="/contactus" element={<><ContactUs /></>} />
                 <Route path="/add" element={<><LoggedInNavbar /> <Add /></>} />
                 <Route path="/search" element={<><SearchPage /></>} />
                 <Route path="/Faq" element={<> <Faqq /></>} />

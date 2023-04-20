@@ -1,7 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react';
+import jwt_decode from "jwt-decode";
+import axios from 'axios';
+import LoggedInNavbar from '../Components/LoggedInNavbar';
+import LandingNavbar from '../Components/LandingNavbar';
+import { useEffect } from 'react'
 
 export const ContactUs = () => {
+
+  const [name, setName] = useState('');
+
+  const refreshToken = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/token');
+      const decoded = jwt_decode(response.data.accessToken);
+      setName(decoded.name);
+    } catch (error) {
+      if (error.response) {
+      }
+    }
+  }
+
+  useEffect(() => {
+    refreshToken();
+  }, []);
+
+  const navbarDecider = () => {
+    if (name.length > 0) {
+      return <LoggedInNavbar />
+    } else {
+      return <LandingNavbar />
+    }
+  }
+
+
   return (
+    <div>
+      {navbarDecider()}
     <div className="col-md-auto col-lg-auto" style={{ marginRight: "15%", marginLeft: "15%", marginTop: "5%" }}>
         <h4 className="mb-3">Contact Us</h4>
         <form className="needs-validation" noValidate="">
@@ -33,6 +67,7 @@ export const ContactUs = () => {
       <button className="w-25 btn btn-primary btn-lg" type="submit">Send</button>
             </div>
         </form>
+    </div>
     </div>
   )
 }
