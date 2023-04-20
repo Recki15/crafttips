@@ -20,13 +20,14 @@ import { Edit } from "./Pages/Edit";
 import SearchPage from "./Pages/Search";
 import { Faqq } from "./Pages/Faq";
 import { Feed } from "./Pages/Feed";
+import { Footer } from "./Components/Footer";
 
 function App() {
     return (
         <Router>
             <Routes>
                 <Route path='*'  element={<><GeneralPageNotFound /></>} />
-                <Route path='/'  element={<><Home /></>} />
+                <Route path='/'  element={<><Home /><Footer></Footer></>} />
                 <Route path='/feed' element={<Feed />} />
                 <Route path='/posts/:ids'  element={<><Posts /></>} />
                 <Route path='/editpost/:ids' element={<><LoggedInNavbar /> <Edit /></>} />
