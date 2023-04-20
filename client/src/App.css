@@ -78,6 +78,16 @@
   background-color: gray;
 }
 
+.footer{
+  background-color: #222831;
+  text-align: center;
+  color: #00ADB5;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
 .btn{
   background-color: #222831;
   color: white;

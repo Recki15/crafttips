@@ -35,7 +35,7 @@ function App() {
                 <Route path="/contactus" element={<><ContactUs /></>} />
                 <Route path="/add" element={<><LoggedInNavbar /> <Add /></>} />
                 <Route path="/search" element={<><SearchPage /></>} />
-                <Route path="/Faq" element={<> <Faqq /></>} />
+                <Route path="/Faq" element={<> <Faqq /><Footer></Footer></>} />
                 <Route path="/admin" element={<><LoggedInNavbar /> <Admin /></>} />
                 <Route path='/login' element={<><LandingNavBar /> <Login /></>} />
                 <Route path='/register' element={<><LandingNavBar /> <Register /></>} />
