@@ -144,7 +144,8 @@ useEffect(() => {
 
 
 return(
-      <div className='gradient-custom-3'>
+      <div className='content'>
+        <div className='gradient-custom-3'>
         <Grid container spacing={1}>
         <Grid item xs={2} className="gridR">
         <div className='sidebardiv'>
@@ -196,6 +197,7 @@ return(
         </div>
         </Grid>
         </Grid>
+      </div>
       </div>
     )
 }

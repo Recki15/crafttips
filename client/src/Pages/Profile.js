@@ -79,7 +79,7 @@ export default function Profile() {
       }
 
   return (
-    <div className="gradient-custom-3">
+    <div className='content'>
       {navbarDecider()}
       <MDBContainer className="py-5 h-100">
         <MDBRow className="justify-content-center align-items-center h-100">

@@ -87,7 +87,7 @@ const navbarDecider = () =>{
   return (
     <>
       {navbarDecider()}
-      <Grid container>
+      <Grid container className='content'>
         <Grid item xs={2}>
         </Grid>
         <Grid item xs={8}>

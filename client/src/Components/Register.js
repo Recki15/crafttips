@@ -54,7 +54,7 @@ export const Register = () => {
                         <div className='box-shadow'>
                             <form onSubmit={Register} className="box">
                                 <div className="field mt-5">
-                                    <label className="label">Name</label>
+                                    <label className="label">Ussername</label>
                                     <div className="controls">
                                         <input type="text" className="input" placeholder="Name" minLength={5} maxLength={30}
                                             value={name} onChange={(e) => setName(e.target.value)} required/>

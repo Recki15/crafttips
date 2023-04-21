@@ -34,7 +34,7 @@ export const ContactUs = () => {
 
 
   return (
-    <div>
+    <div className='content'>
       {navbarDecider()}
     <div className="col-md-auto col-lg-auto" style={{ marginRight: "15%", marginLeft: "15%", marginTop: "5%" }}>
         <h4 className="mb-3">Contact Us</h4>

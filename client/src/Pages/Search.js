@@ -148,7 +148,7 @@ const SearchPage = () => {
 
 
   return (
-    <div>
+    <div className='content'>
       {navbarDecider()}
       <div className='h-100 d-flex align-items-center justify-content-center'>
         <br />

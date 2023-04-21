@@ -83,7 +83,7 @@ export const AdminDecide = () => {
 
   return (
     <>
-      <div className='gradient-custom-3'>
+      <div className='content'>
         <Grid container spacing={1}>
           <Grid item xs={2} className="gridR">
             <div className='sidebardiv'>

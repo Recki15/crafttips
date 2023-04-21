@@ -26,25 +26,25 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route path='*'  element={<><GeneralPageNotFound /></>} />
-                <Route path='/'  element={<><Home /><Footer></Footer></>} />
-                <Route path='/feed' element={<Feed />} />
-                <Route path='/posts/:ids'  element={<><Posts /></>} />
-                <Route path='/editpost/:ids' element={<><LoggedInNavbar /> <Edit /></>} />
+                <Route path='*'  element={<><GeneralPageNotFound /><Footer/></>} />
+                <Route path='/'  element={<><Home /><Footer/></>} />
+                <Route path='/feed' element={<><Feed /><Footer/></>} />
+                <Route path='/posts/:ids'  element={<><Posts /><Footer/></>} />
+                <Route path='/editpost/:ids' element={<><LoggedInNavbar /> <Edit /><Footer/></>} />
                 <Route path='/logout' element={<Logout />} />
-                <Route path="/contactus" element={<><ContactUs /></>} />
-                <Route path="/add" element={<><LoggedInNavbar /> <Add /></>} />
-                <Route path="/search" element={<><SearchPage /></>} />
+                <Route path="/contactus" element={<><ContactUs /><Footer/></>} />
+                <Route path="/add" element={<><LoggedInNavbar /> <Add /><Footer/></>} />
+                <Route path="/search" element={<><SearchPage /><Footer/></>} />
                 <Route path="/Faq" element={<> <Faqq /><Footer></Footer></>} />
-                <Route path="/admin" element={<><LoggedInNavbar /> <Admin /></>} />
-                <Route path='/login' element={<><LandingNavBar /> <Login /></>} />
-                <Route path='/register' element={<><LandingNavBar /> <Register /></>} />
-                <Route path='/admin/Dashboard' element={<><LoggedInNavbar /> <Dashboard /> </>} />
-                <Route path='/profileManage' element={<><LoggedInNavbar /> <ProfileManage /> </>} />
-                <Route path='/admin/admindecide/posts/:ids' element={<><LoggedInNavbar /> <AdminPostChecker /> </>} />
-                <Route path='/admin/admindecide' element={<><LoggedInNavbar /> <AdminDecide /> </>} />
-                <Route path='/profileManage/edit' element={<><LoggedInNavbar /> <ProfileEditor /> </>} />
-                <Route path='/profile/:ids' element={<><Profile /> </>} />
+                <Route path="/admin" element={<><LoggedInNavbar /> <Admin /><Footer/></>} />
+                <Route path='/login' element={<><LandingNavBar /> <Login /><Footer/></>} />
+                <Route path='/register' element={<><LandingNavBar /> <Register /><Footer/></>} />
+                <Route path='/admin/Dashboard' element={<><LoggedInNavbar /> <Dashboard />  <Footer/></>} />
+                <Route path='/profileManage' element={<><LoggedInNavbar /> <ProfileManage /> <Footer/></>} />
+                <Route path='/admin/admindecide/posts/:ids' element={<><LoggedInNavbar /> <AdminPostChecker />  <Footer/> </>} />
+                <Route path='/admin/admindecide' element={<><LoggedInNavbar /> <AdminDecide />  <Footer/></>} />
+                <Route path='/profileManage/edit' element={<><LoggedInNavbar /> <ProfileEditor /> <Footer/></>} />
+                <Route path='/profile/:ids' element={<><Profile /> <Footer/></>} />
             </Routes>
         </Router>
 

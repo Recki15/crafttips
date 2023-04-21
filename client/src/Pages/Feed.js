@@ -91,7 +91,7 @@ export const Feed = () => {
   const currentPosts = ispost.slice(firstPostIndex, lastPostIndex)
 
   return (
-    <div>
+    <div className='content'>
       {navbarDecider()}
       <Grid container spacing={1}>
         <Grid item xs={1} />
