@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Form } from 'react-bootstrap';
 import { useEffect } from 'react'
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
@@ -8,18 +7,17 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Avatar, CardActionArea, FormGroup, Grid } from '@mui/material';
+import { Avatar, CardActionArea, Grid } from '@mui/material';
 import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import "./Background.css";
 import { format, parseISO } from 'date-fns'
 import LandingNavbar from '../Components/LandingNavbar';
+import { ToolsAndMaterialsData } from '../ToolsAndMaterialsData';
 
 const SearchPage = () => {
   const [searchText, setSearchText] = useState('');
   const [selectedTools, setSelectedTools] = useState('');
-  const [selectedOption, setSelectedOption] = useState("");
-  let [sendSelectedOption, setSendSelectedOption] = useState("");;
 
   const [ispost, setpost] = useState([]);
   const [name, setName] = useState('');
@@ -43,7 +41,6 @@ const SearchPage = () => {
   }
 
 
-  //A kategória keresést még bugfixelni kell.
   const searchInput = () => {
     const searchReq = selectedTools.slice(0, -1).replace(/\s+/g, '').toLowerCase().split(";");
     for (let index = 0; index < ispost.length; index++) {
@@ -105,7 +102,6 @@ const SearchPage = () => {
     selectedOption.forEach(e => {
       szoveg = szoveg + e.value + ";"
     });
-    setSendSelectedOption(szoveg);
     setSelectedTools(szoveg);
 
   };
@@ -138,13 +134,6 @@ const SearchPage = () => {
     singleValue: (defaultStyles) => ({ ...defaultStyles, color: "#222831" }),
   };
 
-  const optionList = [
-    { value: "hammer", label: "hammer" },
-    { value: "axe", label: "axe" },
-    { value: "crowbar", label: "crowbar" },
-    { value: "drill", label: "drill" },
-    { value: "spade", label: "spade" }
-  ];
 
 
   return (
@@ -162,7 +151,7 @@ const SearchPage = () => {
           <div className="center">
             <Select
               isMulti
-              options={optionList}
+              options={ToolsAndMaterialsData}
               placeholder="Select the tools needed!"
               onChange={handleChange}
               isSearchable={true}

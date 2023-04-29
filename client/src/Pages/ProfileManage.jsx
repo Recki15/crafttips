@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
+import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography } from 'mdb-react-ui-kit';
 import './ProfileManageStyle.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { Grid } from '@mui/material';
@@ -19,6 +19,7 @@ export default function ProfileManage() {
   const [role, setRole] = useState('');
   const [ispost, setpost] = useState([]);
   const navigate = useNavigate();
+  
   useEffect(() => {
     refreshToken();
     }, []);
@@ -32,6 +33,7 @@ export default function ProfileManage() {
             setEmail(decoded.email);
             setRole(decoded.permission_level);
         } catch (error) {
+          navigate('/')
             if (error.response) {
             }
         }
@@ -55,9 +57,9 @@ export default function ProfileManage() {
       }
 
       const roleDecider = (e) => {
-        if(e === 0){return "User"}
-        if(e === 1){return "Admin"}
-        if(e === 2){return "Super Admin"}
+        if(e === 0){return ("User"), document.getElementById("isAdminLink").style.display = "none"}
+        if(e === 1){return ("Admin"), document.getElementById("isAdminLink").style.display = "initial"}
+        if(e === 2){return ("Super Admin"), document.getElementById("isAdminLink").style.display = "initial"}
       }
 
   return (
@@ -81,6 +83,7 @@ export default function ProfileManage() {
                 <div>
                   <div style={{width: "250px", float: "left"}}>
                     <Link to="/ProfileManage/edit"><button className='editbutton'>Edit Profile/Posts</button></Link>
+                    <Link to="/Admin" id='isAdminLink'><button className='editbutton'>Go to Admin page</button></Link>
                   </div>
                   <div style={{width: "50px", float: "right"}}>
                     <MDBCardText className="mb-1 h5">{ispost.length}</MDBCardText>

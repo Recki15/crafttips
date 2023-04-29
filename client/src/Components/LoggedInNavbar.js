@@ -78,7 +78,6 @@ function LoggedInNavbar() {
     {name:"Home", url:"/"},
     {name:"Add", url:"/add"},
     {name:"Contact Us", url:"/ContactUs"},
-    {name:"Admin", url:"/admin"},
     {name:"Advanced search", url:"/search"},
     {name: "All posts", url: "/feed" }];
 
@@ -86,7 +85,6 @@ function LoggedInNavbar() {
       {name:"FAQ", url:"/faq"},
       {name:"Add", url:"/add"},
       {name:"Contact Us", url:"/ContactUs"},
-      {name:"Admin", url:"/admin"},
       {name:"Advanced search", url:"/search"},
       {name: "All posts", url: "/feed" }];
 
@@ -234,6 +232,7 @@ function LoggedInNavbar() {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              onClick={(e) => {navigate(`/search`) }}
             />
           </Search>
         </Box>

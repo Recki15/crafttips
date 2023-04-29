@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
+import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBTypography } from 'mdb-react-ui-kit';
 import './Background.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button, Grid } from '@mui/material';
@@ -30,6 +30,7 @@ export default function ProfileEditor() {
             viewPost(decoded.userId);
             setName(decoded.name);
         } catch (error) {
+          navigate('/')
             if (error.response) {
             }
         }

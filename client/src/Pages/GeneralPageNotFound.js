@@ -5,7 +5,6 @@ import LandingNavBar from '../Components/LandingNavbar';
 import LoggedInNavbar from '../Components/LoggedInNavbar';
 import "./Background.css";
 import { Link } from 'react-router-dom';
-import { color } from '@mui/system';
 
 
 
@@ -36,7 +35,7 @@ export const GeneralPageNotFound = () => {
     <>
     {navbarDecider()}
     <div style={{display:'block',marginLeft:'auto', marginRight:'auto', marginTop:'20px', marginBottom:'20px' ,width:'30%'}}>
-        <img src='https://cdn-icons-png.flaticon.com/512/580/580185.png'/>
+        <img src='https://cdn-icons-png.flaticon.com/512/580/580185.png' alt='notfound'/>
         <h1 style={{color:"#EEEEEE"}}>Oh-oh! Looks like this page might not exist! If you think this is a mistake try to contact us <b><Link to={"/contactus"} style={{color:"#EEEEEE"}}>here</Link></b></h1>
     </div>
     </>

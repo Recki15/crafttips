@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
-import { Avatar, CardActionArea, Grid } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { Grid } from '@mui/material';
 import "./Background.css";
 import { GiCrafting } from "react-icons/gi";
 import { MdRecycling} from "react-icons/md";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BiHomeAlt } from "react-icons/bi";
-import { CgEnter, CgFeed } from "react-icons/cg";
+import { CgFeed } from "react-icons/cg";
 import { AiOutlineStar } from "react-icons/ai";
 
 export const WelcomeLoggedIn = () => {

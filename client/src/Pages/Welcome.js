@@ -1,6 +1,6 @@
 import React from 'react'
-import { Avatar, CardActionArea, Grid } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
 import "./Background.css";
 import { GiCrafting } from "react-icons/gi";
 import { MdRecycling} from "react-icons/md";

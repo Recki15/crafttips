@@ -5,12 +5,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import LoggedInNavbar from '../../Components/LoggedInNavbar';
-import { CardActionArea, Grid, Hidden } from '@mui/material';
+import { CardActionArea, Grid } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import "../Background.css";
 import { SideBar } from './SideBar';
-import { margin } from '@mui/system';
 
 export const AdminDecide = () => {
 

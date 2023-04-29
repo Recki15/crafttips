@@ -8,6 +8,7 @@ import axios from "axios";
 import Select from "react-select";
 import "../App.css";
 import jwt_decode from "jwt-decode";
+import { ToolsAndMaterialsData } from "../ToolsAndMaterialsData";
 
 export const Edit = () => {
   const [userId, setUserId] = useState(0);
@@ -244,7 +245,7 @@ export const Edit = () => {
                   <div className="center">
                     <Select
                       isMulti
-                      options={optionList}
+                      options={ToolsAndMaterialsData}
                       placeholder="Select the tools needed!"
                       onChange={handleChange}
                       isSearchable={true}

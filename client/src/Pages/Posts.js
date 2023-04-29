@@ -34,7 +34,6 @@ export const Posts = () => {
   const [alreadyRated, setAlreadyRated] = useState(false);
   const { ids } = useParams();
   const [ispost, setpost] = useState([]);
-  const [isRated, setRatings] = useState([]);
   const [value, setRatingValue] = React.useState(3);
   const [hover, setHover] = React.useState(-1);
   let navigate = useNavigate();
@@ -73,7 +72,6 @@ export const Posts = () => {
     try {
       await axios.get(`http://localhost:5000/getRatings/${ids}`)
         .then(res => {
-          setRatings(res.data);
           let avg = 0;
             for (let i = 0; i < res.data.length; i++) {
               if (e === res.data[i].userId) {
@@ -163,11 +161,11 @@ export const Posts = () => {
         <Button type='submit' onClick={addRating} id='addRating'>Submit rating</Button>
       </>
     } else {
-      return 
+      return (
       <>
       <h1 style={{ color: '#EEE' }}>Current rating: {avgRating}</h1>
       <h2 style={{ color: '#EEE' }}>You should register to rate this CraftTip! ;)</h2>
-      </>  
+      </>  )
     }
   }
 
@@ -209,7 +207,7 @@ export const Posts = () => {
         <Grid item xs={8}>
           <div id='postWrap'>
             <div className='postImgdiv'>
-              <img src={ispost.cover_image} className='postImg'></img>
+              <img src={ispost.cover_image} className='postImg' alt={ispost.title}></img>
             </div>
             <div className='postTitle'>
               <h1>{ispost.title}</h1>

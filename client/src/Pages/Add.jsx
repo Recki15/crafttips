@@ -8,6 +8,7 @@ import axios from 'axios';
 import Select from 'react-select';
 import "../App.css";
 import jwt_decode from "jwt-decode";
+import { ToolsAndMaterialsData } from "../ToolsAndMaterialsData";
 
 export const Add = () => {
   const [userId, setUserId] = useState('');
@@ -28,15 +29,6 @@ const refreshToken = async () => {
     }
 }
 
-
-
-  const optionList = [
-    { value: "hammer", label: "hammer" },
-    { value: "axe", label: "axe" },
-    { value: "crowbar", label: "crowbar" },
-    { value: "drill", label: "drill" },
-    { value: "spade", label: "spade" }
-  ];
 
   const [selectedOption, setSelectedOption] = useState("");
   const [cover_image, setCover_Image] = useState("https://feelforhair.co.uk/wp-content/uploads/2017/12/default-post-thumbnail.png");
@@ -173,7 +165,7 @@ var handleChange = (selectedOption) => {
                 <div className="center">
                   <Select
                      isMulti
-                     options={optionList}
+                     options={ToolsAndMaterialsData}
                      placeholder="Select the tools needed!"
                      onChange={handleChange}
                      isSearchable={true}

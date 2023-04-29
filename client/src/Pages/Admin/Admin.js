@@ -133,11 +133,9 @@ useEffect(() => {
     const searchInput = (e) => {
       for (let index = 0; index < ispost.length; index++) {
         if (ispost[index].title.replace(/\s+/g, '').toLowerCase().includes(e.replace(/\s+/g, '').toLowerCase())) {
-          document.getElementById(ispost[index].id).style.height="auto"
-          document.getElementById(ispost[index].id).style.width="auto"
+          document.getElementById(ispost[index].id).style.display = "initial"
         } else {
-          document.getElementById(ispost[index].id).style.height="0"
-          document.getElementById(ispost[index].id).style.width="0"
+          document.getElementById(ispost[index].id).style.display = 'none'
         }
       }
     }

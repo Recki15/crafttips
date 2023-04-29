@@ -9,7 +9,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Avatar, CardActionArea, Grid, } from '@mui/material';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "./Background.css";
 import { format, parseISO } from 'date-fns'
 import LandingNavbar from '../Components/LandingNavbar';

@@ -217,7 +217,8 @@ function LandingNavbar() {
               <StyledInputBase
                 placeholder="Search…"
                 inputProps={{ 'aria-label': 'search' }}
-                onKeyPress={(e) => { if (e.key === "Enter") navigate(`/search/${e.target.value}`) }}
+                //onKeyPress={(e) => { if (e.key === "Enter") navigate(`/search/${e.target.value}`) }}
+                onClick={(e) => {navigate(`/search`) }}
               />
             </Search>
           </Box>
