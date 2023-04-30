@@ -60,8 +60,8 @@ return (
         <h3 className="myaccount-content"> Edit   </h3>
         <div className="form-row">
           <div className="form-group col-md-12">
-            <label className="font-weight-bold"> Title <span className="required"> * </span> </label>
-            <input type="text" name="title" value={userInfo.title} onChange={onChangeValue}  className="form-control" placeholder="Title" required />
+            <label data-testid='testA' className="font-weight-bold"> Title <span className="required"> * </span> </label>
+            <input data-testid='testB' type="text" name="title" value={userInfo.title} onChange={onChangeValue}  className="form-control" placeholder="Title" required />
           </div>
           <div className="form-group col-md-12 editor">
             <label className="font-weight-bold"> Description <span className="required"> * </span> </label>

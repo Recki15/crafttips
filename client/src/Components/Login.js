@@ -50,14 +50,14 @@ export const Login = () => {
                                         <input type="text" className="input" placeholder="Username" value={email} onChange={(e) => setEmail(e.target.value)} />
                                     </div>
                                 </div>
-                                <div className="field mt-5">
+                                <div data-testid='testA' className="field mt-5">
                                     <label className="label">Password</label>
                                     <div className="controls">
                                         <input type="password" className="input" placeholder="******" value={password} onChange={(e) => setPassword(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="buttondiv">
-                                    <button className="loginbutton">Login</button>
+                                    <button data-testid='testB' className="loginbutton">Login</button>
                                 </div>
                                 <div className="field mt-5">
                                     <br/>

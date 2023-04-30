@@ -12,7 +12,7 @@ export function Footer() {
   return (
     <MDBFooter className='footer--pin' style={{ backgroundColor: '#393E46', color: '#00ADB5' }}>
       <MDBContainer className='pt-4'>
-        <section className='mb-4'>
+        <section data-testid='test2' className='mb-4'>
           <MDBBtn
             rippleColor="dark"
             color='link'
@@ -67,7 +67,7 @@ export function Footer() {
         </section>
       </MDBContainer>
 
-      <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)', color: '#00ADB5' }}>
+      <div data-testid='test1' className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)', color: '#00ADB5' }}>
         © 2023 Copyright:
           Crafttips
         
