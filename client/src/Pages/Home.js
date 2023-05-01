@@ -100,7 +100,8 @@ export const Home = () => {
       <div className='gradient-custom-3' style={{ position: 'relative' }}>
         {welcomeDecider()}
         <Grid container spacing={1}>
-          <Grid item xs={12} className="gridL">
+          <Grid item xs={1}></Grid>
+          <Grid item xs={10} className="gridL">
             <div className='decidediv'>
               <Grid container rowSpacing={-5} columnSpacing={{ xs: -1, sm: -2, md: -1 }} >
                 {ispost.map((item, index) => (
@@ -137,7 +138,7 @@ export const Home = () => {
             </div>
 
           </Grid>
-          
+          <Grid item xs={1}></Grid>
         </Grid>
         
       </div>

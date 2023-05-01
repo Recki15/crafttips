@@ -20,7 +20,7 @@ export const Feed = () => {
   const [name, setName] = useState('');
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1)
-  const [postsPerPage, setPostsPerPage] = useState(5)
+  const [postsPerPage, setPostsPerPage] = useState(10)
 
 
   useEffect(() => {
