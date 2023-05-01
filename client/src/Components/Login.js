@@ -45,7 +45,7 @@ export const Login = () => {
                                 <Alert severity="error">{msg}</Alert>
                                 </div>
                                 <div className="field mt-5">
-                                    <label className="label">Email or Username</label>
+                                    <label className="label">Email</label>
                                     <div className="controls">
                                         <input type="text" className="input" placeholder="Username" value={email} onChange={(e) => setEmail(e.target.value)} />
                                     </div>
