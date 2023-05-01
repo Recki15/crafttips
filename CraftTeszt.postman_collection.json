@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "2f9e2e3e-b0ca-4164-9ef1-b555c7692c10",
+		"name": "CraftTeszt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25812465"
+	},
+	"item": [
+		{
+			"name": "all-active-post-test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/activePosts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"activePosts"
+					]
+				},
+				"description": "Visszaadja az összes aktív posztot"
+			},
+			"response": []
+		},
+		{
+			"name": "token-test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"token"
+					]
+				},
+				"description": "Teszteli hogy bevan-e lépve az adott felhasználó"
+			},
+			"response": []
+		},
+		{
+			"name": "get-all-users-test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"users"
+					]
+				},
+				"description": "Megfelelő joggal lekérdezi az összes usert"
+			},
+			"response": []
+		},
+		{
+			"name": "add-new-post-test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/addNewPost",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"addNewPost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login-test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"email\":\"crafttips@crafttips.com\",\r\n\"password\":\"1234567\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
